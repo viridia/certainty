@@ -1,4 +1,5 @@
 expect(value) -- reports error but does not fail the test.
+```
 ensure(value)
   .named(string)
   .isTrue()
@@ -45,3 +46,4 @@ ensure(value)
   .containsKey(value)
   .containsEntry(key, value)
   .doesNotContainKey(value)
+```
