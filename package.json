@@ -1,0 +1,27 @@
+{
+  "name": "certainty",
+  "version": "0.0.1",
+  "description": "Full-featured assertion library with friendly error messages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "keywords": [
+    "test",
+    "assertion",
+    "assert",
+    "testing",
+    "certainty"
+  ],
+  "author": "Talin <viridia@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "eslint": "^2.9.0",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.5",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.0.1",
+    "mocha": "^2.4.5"
+  }
+}
