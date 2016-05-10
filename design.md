@@ -1,3 +1,8 @@
+TODO:
+* smart diffs for failure messages (incl. objects and strings)
+* a better way to format objects in error messages.
+* equals failure should know about ref equals and types.
+
 expect(value) -- reports error but does not fail the test.
 ```
 ensure(value)
@@ -5,7 +10,7 @@ ensure(value)
   .isTrue()
   .isFalse()
   .isTruthy()
-  .isFalsy()
+  .isFalsey()
   .isEmpty()
   .isNotEmpty()
   .isNull()
