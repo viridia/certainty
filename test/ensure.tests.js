@@ -291,38 +291,25 @@ describe('ensure', function () {
         'Expected 1 to be not less than 2.');
     });
 
-    // /** Ensure that the value being tested is an instance of the expected type. */
-    // Subject.prototype.isInstanceOf = function (expected) {
-    //   if (!(this.value instanceof expected)) {
-    //     this.failureStrategy.fail(
-    //       'Expected \'' + this.describe() + '\' to be instance of ' + Subject.pretty(expected) +
-    //         ' but was type ' + typeof(this.value) + '.');
-    //   }
-    //   return this;
-    // };
-    //
-    // /** Ensure that the value being tested is not an instance of the expected type. */
-    // Subject.prototype.isNotInstanceOf = function (expected) {
-    //   if (this.value instanceof expected) {
-    //     this.failureStrategy.fail(
-    //       'Expected type of \'' + this.describe() + '\' to not be ' + Subject.pretty(expected) + '.');
-    //   }
-    //   return this;
-    // };
-    //
-    // /** Ensure that the value being tested has exactly the expected type. */
-    // Subject.prototype.hasType = function (expected) {
-    //   if (typeof(this.value) == expected) {
-    //     this.failureStrategy.fail(
-    //       'Expected\'' + this.describe() + '\' to have type ' + Subject.pretty(expected) +
-    //         ' but was ' + typeof(this.value) + '.');
-    //   }
-    //   return this;
-    // };
-  });
-});
+    it('.hasType', function() {
+      ensure(1).hasType('number');
+      assertThrows(function() { ensure(1).hasType('string'); },
+        'Expected 1 to have type "string", actual type was "number".');
+    });
 
-describe('ensure', function () {
+    it('.isInstanceOf', function() {
+      ensure([]).isInstanceOf(Array);
+      assertThrows(function() { ensure(1).isInstanceOf(Array); },
+        'Expected 1 to be instance of Array, actual prototype was Number.');
+    });
+
+    it('.isNotInstanceOf', function() {
+      ensure([]).isNotInstanceOf(Number);
+      assertThrows(function() { ensure([]).isNotInstanceOf(Array); },
+        'Expected [] to not be instance of Array.');
+    });
+  });
+
   describe('ArraySubject', function () {
     it('.isEmpty', function() {
       ensure([]).isEmpty();
