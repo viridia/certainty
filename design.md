@@ -27,8 +27,6 @@ expect(value) -- reports error but does not fail the test.
 // Array:
 // .isOrdered(opt_comparator)
 // .isPartiallyOrdered(opt_comparator)
-// .constainsNoneOf
-// .containsAny / .containsAll / .containsNone
 
 // Promise
 // .eventually().isTrue() // etc...basically returns a subject

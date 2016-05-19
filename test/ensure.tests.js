@@ -422,5 +422,36 @@ describe('ensure', function () {
       assertThrows(function() { ensure([1, 2]).containsAnyIn([3]); },
         'Expected [1, 2] to contain any of [3].');
     });
+
+    it('.containsNoneOf', function() {
+      ensure([1, 2]).containsNoneOf(5, 6);
+      assertThrows(function() { ensure([1, 2]).containsNoneOf(1, 2); },
+        'Expected [1, 2] to contain none of [1, 2], however it contains 1.');
+    });
+
+    it('.containsNoneIn', function() {
+      ensure([1, 2]).containsNoneIn([5, 6]);
+      assertThrows(function() { ensure([1, 2]).containsNoneIn([1, 2]); },
+        'Expected [1, 2] to contain none of [1, 2], however it contains 1.');
+    });
+
+    function isEven(n) { return  (n % 2) == 0; }
+    it('.containsAny', function() {
+      ensure([2, 4]).containsAny('be even', isEven);
+      assertThrows(function() { ensure([1, 3]).containsAny('be even', isEven); },
+        'Expected any element of [1, 3] to be even.');
+    });
+
+    it('.containsAll', function() {
+      ensure([2, 4]).containsAll('be even', isEven);
+      assertThrows(function() { ensure([1, 2]).containsAll('be even', isEven); },
+        'Expected all elements of [1, 2] to be even.');
+    });
+
+    it('.containsNone', function() {
+      ensure([1, 3]).containsNone('be even', isEven);
+      assertThrows(function() { ensure([1, 2]).containsNone('be even', isEven); },
+        'Expected no elements of [1, 2] to be even.');
+    });
   });
 });
