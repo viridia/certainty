@@ -4,6 +4,7 @@ TODO:
 * A way for objects to be tagged with a more readable description (as opposed to [Object object]).
 * Element subjects, such as hasAttribute.
 
+```
 expect(value) -- reports error but does not fail the test.
 
 // Strings:
@@ -50,3 +51,4 @@ expect(value) -- reports error but does not fail the test.
 // .hasId(id)
 // .hasTabIndex()
 // .matches(selector)
+```
