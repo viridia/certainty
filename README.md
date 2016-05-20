@@ -1,11 +1,11 @@
-# certainty
+# Certainty
 
 ## Introduction.
 
 **Certainty** is a JavaScript assertion framework designed to make your tests and their error
 messages more readable and discoverable, while being extensible to new types of objects.
 
-Certainty is largely inspired by [http://google.github.io/truth/][Truth], a Java-based testing
+Certainty is largely inspired by [Truth](http://google.github.io/truth/), a Java-based testing
 framework.
 
 Certainty provides assertions, and is designed to work in conjunction with popular testing
@@ -32,7 +32,7 @@ Error: Expected width to be greater than 100.
 Certainty’s propositions are intended to read (more or less) like English, and thereby be more
 obvious in their intent, as well as report meaningful information about the errors.
 
-### Fluent syntax:
+### Fluent syntax
 
 Each test proposition begins with a function that wraps the test expression and binds to a fluent
 context object. This object (called a `Subject`) provides a wealth of assertion methods such
@@ -48,7 +48,7 @@ The wrapper function also associates the Subject with a failure strategy, such a
 exception when an assertion fails. The `ensure` function uses the exception strategy, while the
 `expect` function merely prints an error on the console and continues the test.
 
-### Named subjects:
+### Named subjects
 
 The `.named(string)` method can be used to assign a descriptive name to a subject, improving the
 readability of failure messages. For example:
@@ -58,7 +58,7 @@ ensure(10).isGreaterThan(100);                // Prints: 'Expected 10 to be grea
 ensure(10).named('width').isGreaterThan(100); // Prints: 'Expected width to be greater than 100.'
 ```
 
-### Type-specific Subjects:
+### Type-specific Subjects
 
 The set of assertion methods available depends on the runtime type of the test expression. For
 example, passing an array to `ensure()` will return an `ArraySubject`, which has methods for testing
@@ -137,7 +137,6 @@ ensure(someValue).isNotLessThan(otherValue);
 ensure(someValue).isInstanceOf(class);
 ensure(someValue).isNotInstanceOf(class);
 ensure(someValue).hasType(type);
-
 ```
 
 ### Array assertions
@@ -174,5 +173,4 @@ ensure(someArray).containsNoneIn(elementList);
 ensure(someArray).containsAny(verb, testFn);
 ensure(someArray).containsAll(verb, testFn);
 ensure(someArray).containsNone(verb, testFn);
-
 ```
