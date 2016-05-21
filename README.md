@@ -1,6 +1,6 @@
 # Certainty
 
-## Introduction.
+## Introduction
 
 **Certainty** is a JavaScript assertion framework designed to make your tests and their error
 messages more readable and discoverable, while being extensible to new types of objects.
@@ -9,14 +9,15 @@ Certainty is largely inspired by [Truth](http://google.github.io/truth/), a Java
 framework.
 
 Certainty provides assertions, and is designed to work in conjunction with popular testing
-frameworks such as Mocha, or mocking frameworks such as Sinon.
+frameworks such as [Mocha](https://mochajs.org/) or mocking frameworks such as
+[Sinon](http://sinonjs.org/).
 
 Certainty adopts a fluent style for test propositions, and is extensible in several ways. It
 allows different actions to be taken on failure, the default being to throw an exception.
 
 ### An example:
 
-```
+```javascript
 import { ensure } from 'certainty';
 
 let width = 10;
@@ -35,10 +36,10 @@ obvious in their intent, as well as report meaningful information about the erro
 ### Fluent syntax
 
 Each test proposition begins with a function that wraps the test expression and binds to a fluent
-context object. This object (called a `Subject`) provides a wealth of assertion methods such
-as `.isTrue()` and `.isEqualTo()`:
+context object. This object (called a [`Subject`](module-certainty-Subject.html)) provides a wealth
+of assertion methods such as `.isTrue()` and `.isEqualTo()`:
 
-```
+```javascript
 ensure(someValue).isTrue();       // is exactly equal to the value 'true'.
 ensure(someValue).isTruthy();     // is true when coerced to a boolean.
 ensure(someValue).isEqualTo(10);  // is equal to 10.
@@ -53,7 +54,7 @@ exception when an assertion fails. The `ensure` function uses the exception stra
 The `.named(string)` method can be used to assign a descriptive name to a subject, improving the
 readability of failure messages. For example:
 
-```
+```javascript
 ensure(10).isGreaterThan(100);                // Prints: 'Expected 10 to be greater than 100.'
 ensure(10).named('width').isGreaterThan(100); // Prints: 'Expected width to be greater than 100.'
 ```
@@ -65,7 +66,7 @@ example, passing an array to `ensure()` will return an `ArraySubject`, which has
 the elements of the array (`.contains()`, `.hasLength()`, and so on). Passing a string will return
 a `StringSubject`, passing an ES2015 Map object will return a `MapSubject` and so on. For example:
 
-```
+```javascript
 ensure(someArray).hasLength(10);      // is an array of length 10.
 ensure(someString).startsWith('abc'); // starts with the characters 'abc'.
 ensure(someMap).containsKey('abc');   // contains the key 'abc'.
@@ -83,7 +84,7 @@ The following assertions are applicable to all test expressions regardless of ty
 
 #### Boolean assertions
 
-```
+```javascript
 ensure(someValue).isTrue();
 ensure(someValue).isFalse();
 ensure(someValue).isTruthy();
@@ -92,15 +93,15 @@ ensure(someValue).isFalsey();
 The distinction between *true* and *truthy* is as follows: A *truthy* value is one that yields
 `true` when coerced to a boolean, e.g.:
 
-```
+```javascript
 if (someValue) { /* value is truthy. */ } else { /* value is falsey. */ }
 ```
 
-Whereas a value is only *true* if it is exactly equal to the literal value `true`.
+Whereas `isTrue()` only succeeds if the value is exactly equal to the literal value `true`.
 
 #### Tests for `null` and `undefined`
 
-```
+```javascript
 ensure(someValue).isNull();
 ensure(someValue).isNotNull();
 ensure(someValue).isUndefined();
@@ -111,7 +112,7 @@ ensure(someValue).exists();               // Synonym for isNotNullOrUndefined()
 ```
 
 #### Equality tests
-```
+```javascript
 ensure(someValue).isEqualTo(otherValue);
 ensure(someValue).equals(otherValue);     // Synonym for isEqualTo()
 ensure(someValue).isNotEqualTo(otherValue);
@@ -126,14 +127,14 @@ deep comparison of `{ a:1, b:1 }` with `{ a:1 }` will report the fact that it ex
 property to exist but it did not find one.
 
 #### Relational tests
-```
+```javascript
 ensure(someValue).isGreaterThan(otherValue);
 ensure(someValue).isNotGreaterThan(otherValue);
 ensure(someValue).isLessThan(otherValue);
 ensure(someValue).isNotLessThan(otherValue);
 ```
 #### Type tests
-```
+```javascript
 ensure(someValue).isInstanceOf(class);
 ensure(someValue).isNotInstanceOf(class);
 ensure(someValue).hasType(type);
@@ -145,7 +146,7 @@ The following assertions are applicable to array expressions:
 
 #### Array length assertions
 
-```
+```javascript
 ensure(someArray).isEmpty();
 ensure(someArray).isNotEmpty();
 ensure(someArray).hasLength(length);
@@ -153,7 +154,7 @@ ensure(someArray).hasLength(length);
 
 #### Array membership assertions
 
-```
+```javascript
 // Accepts a single element value
 ensure(someArray).contains(element);
 
@@ -174,3 +175,42 @@ ensure(someArray).containsAny(verb, testFn);
 ensure(someArray).containsAll(verb, testFn);
 ensure(someArray).containsNone(verb, testFn);
 ```
+
+### Object assertions
+
+The following assertions are applicable to object expressions:
+
+```javascript
+ensure(someObject).isEmpty();
+ensure(someObject).isNotEmpty();
+ensure(someObject).hasField(key).withValue(expectedValue);
+ensure(someObject).hasOwnField(key).withValue(expectedValue);
+```
+
+### String assertions
+
+### ES2015 collection assertions
+
+Certainty will detect if the ES2015 `Map` and `Set` classes are present, and if so, it will add
+support for these collection types.
+
+## Extending Certainty
+
+It's relatively easy to add support for additional test expression types. The global singleton
+`subjectFactory` creates subjects based on the type of the test expression. To add support for
+a new type, you'll need to tell the subjectFactory about your type:
+
+```javascript
+import { subjectFactory } from 'certainty';
+
+subjectFactory.addType(function(failureStrategy, value) {
+  if (value instanceof MyType) {
+    return new MyTypeSubject(failureStrategy, value);
+  }
+  return null;
+});
+```
+
+The argument to `addType()` is a factory function which is passed the test expression. If the
+factory function recognizes the type, it should return a subclass of `Subject`, otherwise it should
+return `null`.
