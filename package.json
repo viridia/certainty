@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "jsdoc": "jsdoc -c conf.json",
-    "test": "mocha test/*.js"
+    "test": "npm run test-node",
+    "test-node": "mocha test/*.js",
+    "test-browser": "karma start --single-run"
   },
   "keywords": [
     "test",
@@ -23,12 +25,16 @@
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.5",
     "karma-chrome-launcher": "^1.0.1",
+    "karma-firefox-launcher": "^1.0.0",
     "karma-mocha": "^1.0.1",
+    "karma-phantomjs-launcher": "^1.0.0",
     "minami": "^1.1.1",
     "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.7",
     "watchify": "^3.7.0"
   },
   "directories": {
+    "doc": "doc",
     "test": "test"
   },
   "dependencies": {},

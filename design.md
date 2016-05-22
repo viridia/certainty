@@ -8,6 +8,7 @@ TODO:
 expect(value) -- reports error but does not fail the test.
 
 // Strings:
+// .contains(str)
 // .startsWith(str)
 // .endsWith(str)
 // .matches(regex)
@@ -28,13 +29,6 @@ expect(value) -- reports error but does not fail the test.
 // Array:
 // .isOrdered(opt_comparator)
 // .isPartiallyOrdered(opt_comparator)
-
-// Promise
-// .eventually().isTrue()
-// .eventually().isEqualTo()
-// .eventually().contains()
-// .resolves().withValue()
-// .rejects().withValue()
 
 // RegExp
 // .accepts?

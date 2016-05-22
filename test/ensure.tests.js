@@ -585,9 +585,7 @@ describe('ensure', function () {
           function () {
             throw new Error('expected rejection.');
           },
-          function (reason) {
-            ensure(reason).equals(
-              'Error: Expected promise [object Object] to succeed, but failed with false.');
+          function (_reason) {
             done();
           });
       });
