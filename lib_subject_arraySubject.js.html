@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/subject/arraySubject.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-certainty-ArraySubject.html">ArraySubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-ArraySubject.html#contains">contains</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAll">containsAll</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAllIn">containsAllIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAllOf">containsAllOf</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAny">containsAny</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAnyIn">containsAnyIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAnyOf">containsAnyOf</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsExactly">containsExactly</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsExactlyIn">containsExactlyIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsNone">containsNone</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsNoneIn">containsNoneIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsNoneOf">containsNoneOf</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#hasLength">hasLength</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="module-certainty-DeferredSubject.html">DeferredSubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-DeferredSubject.html#invoke">invoke</a></li></ul></li><li><a href="module-certainty-FieldValue.html">FieldValue</a><ul class='methods'><li data-type='method'><a href="module-certainty-FieldValue.html#withValue">withValue</a></li></ul></li><li><a href="module-certainty-InOrder.html">InOrder</a><ul class='methods'><li data-type='method'><a href="module-certainty-InOrder.html#inOrder">inOrder</a></li></ul></li><li><a href="module-certainty-ObjectSubject.html">ObjectSubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-ObjectSubject.html#hasField">hasField</a></li><li data-type='method'><a href="module-certainty-ObjectSubject.html#hasOwnField">hasOwnField</a></li><li data-type='method'><a href="module-certainty-ObjectSubject.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="module-certainty-ObjectSubject.html#isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="module-certainty-PromiseSubject.html">PromiseSubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-PromiseSubject.html#eventually">eventually</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#fails">fails</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#failsWith">failsWith</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#succeeds">succeeds</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#succeedsWith">succeedsWith</a></li></ul></li><li><a href="module-certainty-Subject.html">Subject</a><ul class='methods'><li data-type='method'><a href="module-certainty-Subject.html#describe">describe</a></li><li data-type='method'><a href="module-certainty-Subject.html#equals">equals</a></li><li data-type='method'><a href="module-certainty-Subject.html#exists">exists</a></li><li data-type='method'><a href="module-certainty-Subject.html#fail">fail</a></li><li data-type='method'><a href="module-certainty-Subject.html#failComparison">failComparison</a></li><li data-type='method'><a href="module-certainty-Subject.html#failEqual">failEqual</a></li><li data-type='method'><a href="module-certainty-Subject.html#failNotEqual">failNotEqual</a></li><li data-type='method'><a href="module-certainty-Subject.html#hasType">hasType</a></li><li data-type='method'><a href="module-certainty-Subject.html#isDeeplyEqualTo">isDeeplyEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isEqualTo">isEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isExactly">isExactly</a></li><li data-type='method'><a href="module-certainty-Subject.html#isFalse">isFalse</a></li><li data-type='method'><a href="module-certainty-Subject.html#isFalsey">isFalsey</a></li><li data-type='method'><a href="module-certainty-Subject.html#isGreaterThan">isGreaterThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isInstanceOf">isInstanceOf</a></li><li data-type='method'><a href="module-certainty-Subject.html#isLessThan">isLessThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotDeeplyEqualTo">isNotDeeplyEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotEqualTo">isNotEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotGreaterThan">isNotGreaterThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotInstanceOf">isNotInstanceOf</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotLessThan">isNotLessThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotNull">isNotNull</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotNullOrUndefined">isNotNullOrUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotUndefined">isNotUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNull">isNull</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNullOrUndefined">isNullOrUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#isTrue">isTrue</a></li><li data-type='method'><a href="module-certainty-Subject.html#isTruthy">isTruthy</a></li><li data-type='method'><a href="module-certainty-Subject.html#isUndefined">isUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#named">named</a></li></ul></li><li><a href="module-certainty-SubjectFactory.html">SubjectFactory</a><ul class='methods'><li data-type='method'><a href="module-certainty-SubjectFactory.html#addType">addType</a></li><li data-type='method'><a href="module-certainty-SubjectFactory.html#newSubject">newSubject</a></li></ul></li><li><a href="ProxyBase.html">ProxyBase</a><ul class='methods'><li data-type='method'><a href="ProxyBase.html#.addMethod">addMethod</a></li><li data-type='method'><a href="ProxyBase.html#.addMethods">addMethods</a></li><li data-type='method'><a href="ProxyBase.html#invoke">invoke</a></li></ul></li><li><a href="ThrowStrategy.html">ThrowStrategy</a><ul class='methods'><li data-type='method'><a href="ThrowStrategy.html#fail">fail</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-certainty.html">certainty</a><ul class='methods'><li data-type='method'><a href="module-certainty.html#~ensure">ensure</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#compare">compare</a></li><li><a href="global.html#format">format</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/subject/arraySubject.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module certainty */
+var format = require('../format');
+var Subject = require('./subject');
+var ProxyBase = require('./proxy');
+
+/** Fluent context object used to add an in-order assertion to a contains test.
+    @constructor
+*/
+function InOrder() {}
+InOrder.INSTANCE = new InOrder();
+
+/** Asserts that the array elements previously tested are not only present in the array but
+    present in order as well.
+*/
+InOrder.prototype.inOrder = function () {}
+ProxyBase.addMethods(InOrder);
+
+/** Fluent context object used when we know that an in-order assertion would have failed.
+    @param {ArraySubject} subject The subject.
+    @param {string} msg The message to display when we attempt an in-order assertion.
+    @constructor
+    @private
+*/
+function NotInOrder(subject, msg) {
+  this.subject = subject;
+  this.msg = msg;
+}
+
+/** Asserts that the array elements previously tested are not only present in the array but
+    present in order as well. Since we already know this is false, this function always fails.
+*/
+NotInOrder.prototype.inOrder = function () {
+  this.subject.fail(this.msg);
+}
+
+/** Subject subclass which provides assertion methods for array types.
+    @param {FailureStrategy} failureStrategy The failure strategy to use when an assertion fails.
+    @param {*} value The value being checked.
+    @constructor
+    @extends Subject
+*/
+function ArraySubject(failureStrategy, value) {
+  Subject.call(this, failureStrategy, value);
+}
+ArraySubject.prototype = Object.create(Subject.prototype);
+ArraySubject.prototype.constructor = ArraySubject;
+
+/** Ensure that the array is empty.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.isEmpty = function () {
+  if (this.value.length != 0) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be empty.');
+  }
+  return this;
+};
+
+/** Ensure that the array is a not empty.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.isNotEmpty = function () {
+  if (this.value.length == 0) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be non-empty.');
+  }
+  return this;
+};
+
+/** Ensure that the array has a length equal to the specified length.
+    @param {number} length The expected length.
+    @return {Subject} `this` for chaining.
+*/
+ArraySubject.prototype.hasLength = function (length) {
+  if (this.value.length != length) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to have length ' + length
+      + ', but was ' + this.value.length + '.');
+  }
+  return this;
+};
+
+/** Ensure that the array contains the given element.
+    @param {*} element The element that the value is expected to contain.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.contains = function (element) {
+  var i = this.value.indexOf(element);
+  if (i &lt; 0) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to contain ' +
+      format(element, 30) + '.');
+  }
+  return this;
+};
+
+/** Ensure that the array contains all of the elements specified.
+    @param {...*} elements The elements that the array must contain.
+    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
+      given elements
+*/
+ArraySubject.prototype.containsAllOf = function () {
+  return this.containsAllIn(arguments);
+};
+
+/** Ensure that the array contains exactly the elements specified.
+    @param {...*} elements The elements that the array must contain.
+    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
+      given elements
+*/
+ArraySubject.prototype.containsExactly = function () {
+  return this.containsExactlyIn(arguments);
+};
+
+/** Ensure that the array contains any of the elements specified.
+    @param {...*} elements The elements that the array must contain.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.containsAnyOf = function () {
+  return this.containsAnyIn(arguments);
+};
+
+/** Ensure that the array contains none of the elements specified.
+    @param {...*} elements The elements that the array must not contain.
+    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
+      given elements
+*/
+ArraySubject.prototype.containsNoneOf = function () {
+  return this.containsNoneIn(arguments);
+};
+
+/** Ensure that the array contains all of the elements specified.
+    @param {Iterable} elements Iterable which produces the elements that the array must contain.
+    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
+      given elements.
+*/
+ArraySubject.prototype.containsAllIn = function (elements) {
+  var inOrder = true;
+  var nextIndex = 0;
+  var elementsInOrder = [];
+  var missing = [];
+  for (var key in elements) {
+    var el = elements[key];
+    var index = this.value.indexOf(el, nextIndex);
+    if (index &lt; 0) {
+      index = this.value.indexOf(el);
+      if (index &lt; 0) {
+        missing.push(el);
+        continue;
+      }
+      inOrder = false;
+    } else {
+      nextIndex = index + 1;
+      if (inOrder) {
+        elementsInOrder.push(el);
+      }
+    }
+  }
+
+  if (missing.length > 0) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to contain elements ' +
+      format(Array.prototype.slice.call(elements)) + ', is missing ' + format(missing) + '.');
+    return InOrder.INSTANCE; // No need to fail twice
+  }
+
+  if (!inOrder) {
+    // We succeeded, but the elements are out of order, so return an object which fails if they
+    // as for an order check.
+    var msg = 'Expected ' + this.describe() + ' to contain elements ' +
+      format(Array.prototype.slice.call(elements)) +
+      ' in order, but contains only these elements in order: ' +
+      format(elementsInOrder) + '.';
+    return new NotInOrder(this, msg);
+  }
+  return InOrder.INSTANCE;
+};
+
+/** Ensure that the array contains exactly the elements specified.
+    @param {Iterable} elements Iterable which produces the elements that the array must contain.
+    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
+      given elements
+*/
+ArraySubject.prototype.containsExactlyIn = function (elements) {
+  var inOrder = true;
+  var elementsInOrder = [];
+  var missing = [];
+  var elts = this.value.slice();
+  var msg;
+  for (var key in elements) {
+    var el = elements[key];
+    var index = elts.indexOf(el);
+    if (index &lt; 0) {
+      missing.push(el);
+    } else {
+      if (index != 0) {
+        inOrder = false;
+      }
+      if (inOrder) {
+        elementsInOrder.push(el);
+      }
+      elts.splice(index, 1);
+    }
+  }
+
+  if (missing.length || elts.length) {
+    msg = 'Expected ' + this.describe() + ' to contain exactly elements ' +
+      format(Array.prototype.slice.call(elements));
+    if (missing.length) {
+      msg += ', is missing ' + format(missing);
+    }
+    if (elts.length) {
+      msg += ', extra elements ' + format(elts);
+    }
+    msg += '.';
+    this.failureStrategy.fail(msg);
+    return InOrder.INSTANCE; // We already failed, no need to fail again.
+  }
+
+  if (!inOrder) {
+    msg = 'Expected ' + this.describe() + ' to contain exactly elements ' +
+      format(Array.prototype.slice.call(elements)) +
+      ' in order, but contains only these elements in order: ' +
+      format(elementsInOrder) + '.';
+    return new NotInOrder(this, msg);
+  }
+
+  return InOrder.INSTANCE;
+};
+
+/** Ensure that the array contains any of the elements specified.
+    @param {Iterable} elements Iterable which produces the elements that the array must contain.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.containsAnyIn = function (elements) {
+  for (var key in elements) {
+    var el = elements[key];
+    var index = this.value.indexOf(el);
+    if (index >= 0) {
+      return this;
+    }
+  }
+  this.failureStrategy.fail('Expected ' + this.describe() + ' to contain any of ' +
+    format(Array.prototype.slice.call(elements)) + '.');
+  return this;
+};
+
+/** Ensure that the array contains none of the elements specified.
+    @param {Iterable} elements Iterable which produces the elements that the array must not contain.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.containsNoneIn = function (elements) {
+  for (var key in elements) {
+    var el = elements[key];
+    var index = this.value.indexOf(el);
+    if (index >= 0) {
+      this.failureStrategy.fail('Expected ' + this.describe() + ' to contain none of ' +
+        format(Array.prototype.slice.call(elements)) + ', however it contains ' + format(el) + '.');
+      return this;
+    }
+  }
+  return this;
+};
+
+/** Ensure that at least one element of the array satisfies a test function.
+    @param {string} verb A description of the test, such as 'be even' or 'be prime'.
+    @param {Function} testFn The test that elements must satisfy.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.containsAny = function (verb, testFn) {
+  for (var i = 0; i &lt; this.value.length; ++i) {
+    var el = this.value[i];
+    if (testFn(el)) {
+      return this;
+    }
+  }
+  this.failureStrategy.fail('Expected any element of ' + this.describe() + ' to ' + verb + '.');
+  return this;
+};
+
+/** Ensure that at all the elements of the array satisfy a test function.
+    @param {string} verb A description of the test, such as 'be even' or 'be prime'.
+    @param {Function} testFn The test that elements must satisfy.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.containsAll = function (verb, testFn) {
+  for (var i = 0; i &lt; this.value.length; ++i) {
+    var el = this.value[i];
+    if (!testFn(el)) {
+      this.failureStrategy.fail('Expected all elements of ' + this.describe() + ' to ' +
+        verb + '.');
+      return this;
+    }
+  }
+  return this;
+};
+
+/** Ensure that at none the elements of the array satisfy a test function.
+    @param {string} verb A description of the test, such as 'be even' or 'be prime'.
+    @param {Function} testFn The test that elements must satisfy.
+    @return {ArraySubject} `this` for chaining.
+*/
+ArraySubject.prototype.containsNone = function (verb, testFn) {
+  for (var i = 0; i &lt; this.value.length; ++i) {
+    var el = this.value[i];
+    if (testFn(el)) {
+      this.failureStrategy.fail('Expected no elements of ' + this.describe() + ' to ' + verb + '.');
+      return this;
+    }
+  }
+  return this;
+};
+
+module.exports = ArraySubject;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun May 22 2016 12:20:01 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

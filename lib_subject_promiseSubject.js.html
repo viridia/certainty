@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/subject/promiseSubject.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-certainty-ArraySubject.html">ArraySubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-ArraySubject.html#contains">contains</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAll">containsAll</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAllIn">containsAllIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAllOf">containsAllOf</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAny">containsAny</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAnyIn">containsAnyIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsAnyOf">containsAnyOf</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsExactly">containsExactly</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsExactlyIn">containsExactlyIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsNone">containsNone</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsNoneIn">containsNoneIn</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#containsNoneOf">containsNoneOf</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#hasLength">hasLength</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="module-certainty-ArraySubject.html#isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="module-certainty-DeferredSubject.html">DeferredSubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-DeferredSubject.html#invoke">invoke</a></li></ul></li><li><a href="module-certainty-FieldValue.html">FieldValue</a><ul class='methods'><li data-type='method'><a href="module-certainty-FieldValue.html#withValue">withValue</a></li></ul></li><li><a href="module-certainty-InOrder.html">InOrder</a><ul class='methods'><li data-type='method'><a href="module-certainty-InOrder.html#inOrder">inOrder</a></li></ul></li><li><a href="module-certainty-ObjectSubject.html">ObjectSubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-ObjectSubject.html#hasField">hasField</a></li><li data-type='method'><a href="module-certainty-ObjectSubject.html#hasOwnField">hasOwnField</a></li><li data-type='method'><a href="module-certainty-ObjectSubject.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="module-certainty-ObjectSubject.html#isNotEmpty">isNotEmpty</a></li></ul></li><li><a href="module-certainty-PromiseSubject.html">PromiseSubject</a><ul class='methods'><li data-type='method'><a href="module-certainty-PromiseSubject.html#eventually">eventually</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#fails">fails</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#failsWith">failsWith</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#succeeds">succeeds</a></li><li data-type='method'><a href="module-certainty-PromiseSubject.html#succeedsWith">succeedsWith</a></li></ul></li><li><a href="module-certainty-Subject.html">Subject</a><ul class='methods'><li data-type='method'><a href="module-certainty-Subject.html#describe">describe</a></li><li data-type='method'><a href="module-certainty-Subject.html#equals">equals</a></li><li data-type='method'><a href="module-certainty-Subject.html#exists">exists</a></li><li data-type='method'><a href="module-certainty-Subject.html#fail">fail</a></li><li data-type='method'><a href="module-certainty-Subject.html#failComparison">failComparison</a></li><li data-type='method'><a href="module-certainty-Subject.html#failEqual">failEqual</a></li><li data-type='method'><a href="module-certainty-Subject.html#failNotEqual">failNotEqual</a></li><li data-type='method'><a href="module-certainty-Subject.html#hasType">hasType</a></li><li data-type='method'><a href="module-certainty-Subject.html#isDeeplyEqualTo">isDeeplyEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isEqualTo">isEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isExactly">isExactly</a></li><li data-type='method'><a href="module-certainty-Subject.html#isFalse">isFalse</a></li><li data-type='method'><a href="module-certainty-Subject.html#isFalsey">isFalsey</a></li><li data-type='method'><a href="module-certainty-Subject.html#isGreaterThan">isGreaterThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isInstanceOf">isInstanceOf</a></li><li data-type='method'><a href="module-certainty-Subject.html#isLessThan">isLessThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotDeeplyEqualTo">isNotDeeplyEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotEqualTo">isNotEqualTo</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotGreaterThan">isNotGreaterThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotInstanceOf">isNotInstanceOf</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotLessThan">isNotLessThan</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotNull">isNotNull</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotNullOrUndefined">isNotNullOrUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNotUndefined">isNotUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNull">isNull</a></li><li data-type='method'><a href="module-certainty-Subject.html#isNullOrUndefined">isNullOrUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#isTrue">isTrue</a></li><li data-type='method'><a href="module-certainty-Subject.html#isTruthy">isTruthy</a></li><li data-type='method'><a href="module-certainty-Subject.html#isUndefined">isUndefined</a></li><li data-type='method'><a href="module-certainty-Subject.html#named">named</a></li></ul></li><li><a href="module-certainty-SubjectFactory.html">SubjectFactory</a><ul class='methods'><li data-type='method'><a href="module-certainty-SubjectFactory.html#addType">addType</a></li><li data-type='method'><a href="module-certainty-SubjectFactory.html#newSubject">newSubject</a></li></ul></li><li><a href="ProxyBase.html">ProxyBase</a><ul class='methods'><li data-type='method'><a href="ProxyBase.html#.addMethod">addMethod</a></li><li data-type='method'><a href="ProxyBase.html#.addMethods">addMethods</a></li><li data-type='method'><a href="ProxyBase.html#invoke">invoke</a></li></ul></li><li><a href="ThrowStrategy.html">ThrowStrategy</a><ul class='methods'><li data-type='method'><a href="ThrowStrategy.html#fail">fail</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-certainty.html">certainty</a><ul class='methods'><li data-type='method'><a href="module-certainty.html#~ensure">ensure</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#compare">compare</a></li><li><a href="global.html#format">format</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/subject/promiseSubject.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module certainty */
+var Subject = require('./subject');
+var ProxyBase = require('./proxy');
+var format = require('../format');
+
+/** A class which functions as a subject, but doesn't actually execute any assertions until
+    the promise has resolved. Once the promise succeeds, any method calls will be played back
+    on the result value of the promise.
+    @param {PromiseSubject} subject The subject wrapping the promise.
+    @param {Promise} promise The promise being tested.
+    @constructor
+    @extends ProxyBase
+  */
+function DeferredSubject(subject, promise) {
+  ProxyBase.call(this);
+  this.subject = subject;
+  this.promise = promise;
+  this.calls = [];
+  var self = this;
+  this.promise = this.promise.then(
+    function(value) {
+      // Play back the recorded calls on a new subject which is created based on the resolved
+      // value of the promise.
+      var subjectFactory = require('./factory');
+      var stem = subjectFactory.newSubject(self.subject.failureStrategy, value);
+      for (var i = 0; i &lt; self.calls.length; ++i) {
+        var call = self.calls[i];
+        // For fluent chaining, the return value of the method is the target of the next call.
+        stem = stem[call.methodName].apply(stem, call.arguments);
+      }
+      return value;
+    },
+    function(reason) {
+      self.subject.fail('Expected promise ' + self.subject.describe() +
+        ' to succeed, but failed with ' + format(reason) + '.');
+      return reason;
+    }
+  );
+  // Make this object a thenable
+  this.then = this.promise.then.bind(this.promise);
+  this.catch = this.promise.catch.bind(this.promise);
+}
+DeferredSubject.prototype = Object.create(ProxyBase.prototype);
+DeferredSubject.prototype.constructor = ProxyBase;
+
+/** Called for a proxied method; records a method call for later playback. */
+DeferredSubject.prototype.invoke = function(methodName, args) {
+  this.calls.push({ methodName: methodName, arguments: args });
+  return this;
+};
+
+/** Subject subclass which provides assertion methods for promise types.
+    @param {FailureStrategy} failureStrategy The failure strategy to use when an assertion fails.
+    @param {*} value The value being checked.
+    @constructor
+    @extends Subject
+*/
+function PromiseSubject(failureStrategy, value) {
+  Subject.call(this, failureStrategy, value);
+  // Make this object a thenable
+  this.then = this.value.then.bind(this.value);
+  this.catch = this.value.catch.bind(this.value);
+}
+PromiseSubject.prototype = Object.create(Subject.prototype);
+PromiseSubject.prototype.constructor = PromiseSubject;
+
+/** Ensure that the promise eventually succeeds.
+    @return {PromiseSubject} `this` for chaining.
+*/
+PromiseSubject.prototype.succeeds = function () {
+  var self = this;
+  return this.value.catch(
+    function (reason) {
+      self.fail('Expected promise ' + self.describe() + ' to succeed, but failed with ' +
+        format(reason) + '.');
+      return reason;
+    });
+};
+
+/** Ensure that the promise eventually succeeds with the specified value.
+    @param {*} expected The value that the promise must resolve to.
+    @return {PromiseSubject} `this` for chaining.
+*/
+PromiseSubject.prototype.succeedsWith = function (expected) {
+  var self = this;
+  return this.value.then(
+    function (value) {
+      if (value !== expected) {
+        self.fail('Expected promise ' + self.describe() + ' to resolve to ' + format(expected) +
+          ' actual value was ' + format(value) + '.');
+      }
+      return value;
+    },
+    function (reason) {
+      self.fail('Expected promise ' + self.describe() + ' to succeed, but failed with ' +
+        format(reason) + '.');
+      return reason;
+    });
+};
+
+/** Ensure that the promise eventually fails.
+    @return {PromiseSubject} `this` for chaining.
+*/
+PromiseSubject.prototype.fails = function () {
+  var self = this;
+  return this.value.then(
+    function (value) {
+      self.fail('Expected promise ' + self.describe() + ' to fail, but succeeded with ' +
+        format(value) + '.');
+      return value;
+    },
+    function (reason) {
+      return reason;
+    });
+};
+
+/** Ensure that the promise eventually fails with the specified reason.
+    @param {*} expected The expected reason for rejection.
+    @return {PromiseSubject} `this` for chaining.
+*/
+PromiseSubject.prototype.failsWith = function (expected) {
+  var self = this;
+  return this.value.then(
+    function (value) {
+      self.fail('Expected promise ' + self.describe() + ' to fail, but succeeded with ' +
+        format(value) + '.');
+      return value;
+    },
+    function (reason) {
+      if (reason !== expected) {
+        self.fail('Expected promise ' + self.describe() + ' to be rejected with ' +
+          format(expected) + ' actual reason was ' + format(reason) + '.');
+      }
+      return reason;
+    });
+};
+
+/** Ensure that the promise succeds, and returns a 'deferred subject' - an object that allows
+    assertions methods to be called, but doesn't actually execute the assertions until after
+    the promise has resolved.
+    @return {DeferredSubject} `this` for chaining.
+*/
+PromiseSubject.prototype.eventually = function () {
+  return new DeferredSubject(this, this.value);
+};
+
+module.exports = PromiseSubject;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun May 22 2016 12:20:01 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
