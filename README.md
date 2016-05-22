@@ -1,5 +1,10 @@
 # Certainty
 
+<a href="https://github.com/viridia/certainty"><img style="position: absolute; top: 0; right: 0; border: 0;"
+  src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+  alt="Fork me on GitHub"
+  data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+
 ## Introduction
 
 **Certainty** is a JavaScript assertion framework designed to make your tests and their error
@@ -15,7 +20,10 @@ frameworks such as [Mocha](https://mochajs.org/) or mocking frameworks such as
 Certainty adopts a fluent style for test propositions, and is extensible in several ways. It
 allows different actions to be taken on failure, the default being to throw an exception.
 
-### An example:
+ * [GitHub](https://github.com/viridia/certainty)
+ * [JSDocs](https://viridia.github.io/certainty)
+
+### A simple example:
 
 ```javascript
 import { ensure } from 'certainty';
@@ -250,7 +258,6 @@ a new type, you'll need to tell the subjectFactory about your type:
 import { subjectFactory } from 'certainty';
 
 subjectFactory.addType(function(value) { return value instanceof MyType; }, MyTypeSubject);
-});
 ```
 
 The argument to `addType()` is a factory function which is passed the test expression. If the
