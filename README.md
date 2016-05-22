@@ -194,6 +194,52 @@ ensure(someObject).hasOwnField(key).withValue(expectedValue);
 Certainty will detect if the ES2015 `Map` and `Set` classes are present, and if so, it will add
 support for these collection types.
 
+### Promise assertions
+
+Certainty supports assertions on JavaScript Promises if they are available in the environment.
+Note that if you are transpiling your application with Babel in order to get Promise support,
+you'll need to transpile Certainty as well.
+
+The `PromiseSubject.eventually()` method returns a subject that supports the standard assertions
+methods, but waits until the promise has resolved before executing those assertions. The set
+of assertion methods available depends on the type of object returned by the promise, so for example
+if the promise resolves to an Array, you can call `.contains()` on it.
+
+Examples:
+
+```javascript
+ensure(somePromise).eventually().isTrue();
+ensure(somePromise).eventually().named('x').equals(someValue);
+ensure(somePromise).eventually().contains(someItem);
+```
+Note that putting the `.named()` call after `.eventually()` causes the name to be assigned to
+the resolved value instead of the promise object.
+
+If you just want to know if the promise succeeded or failed, you can simply call `.succeeds()` or
+`.fails()`:
+
+```javascript
+ensure(somePromise).succeeds();
+ensure(somePromise).fails();
+
+// Does simply equality comparison.
+ensure(somePromise).succeedsWith(someValue);
+ensure(somePromise).failsWith(someReason);
+```
+
+Note that the return value of the assertion methods are 'thenable', so if you are testing using
+Mocha, you can return the result of the assertion from your test method, which will cause Mocha
+to wait until your promise is resolved.
+
+```javascript
+describe('MyTest', function() {
+  it('should resolve to 7', function() {
+    var promise = methodThatCreatesAPromise();
+    return ensure(promise).eventually().equals(7);
+  });
+});
+```
+
 ## Extending Certainty
 
 It's relatively easy to add support for additional test expression types. The global singleton
@@ -203,14 +249,13 @@ a new type, you'll need to tell the subjectFactory about your type:
 ```javascript
 import { subjectFactory } from 'certainty';
 
-subjectFactory.addType(function(failureStrategy, value) {
-  if (value instanceof MyType) {
-    return new MyTypeSubject(failureStrategy, value);
-  }
-  return null;
+subjectFactory.addType(function(value) { return value instanceof MyType; }, MyTypeSubject);
 });
 ```
 
 The argument to `addType()` is a factory function which is passed the test expression. If the
 factory function recognizes the type, it should return a subclass of `Subject`, otherwise it should
 return `null`.
+
+If you plan to make your custom `Subject` class work with promises, there's a little bit of extra
+work to be done. See the source for `ArraySubject` for an example.

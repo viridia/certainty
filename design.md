@@ -30,8 +30,9 @@ expect(value) -- reports error but does not fail the test.
 // .isPartiallyOrdered(opt_comparator)
 
 // Promise
-// .eventually().isTrue() // etc...basically returns a subject
+// .eventually().isTrue()
 // .eventually().isEqualTo()
+// .eventually().contains()
 // .resolves().withValue()
 // .rejects().withValue()
 
@@ -51,4 +52,5 @@ expect(value) -- reports error but does not fail the test.
 // .hasId(id)
 // .hasTabIndex()
 // .matches(selector)
+
 ```

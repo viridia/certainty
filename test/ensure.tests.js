@@ -1,4 +1,5 @@
 /* eslint-env node, mocha */
+/* global Promise */
 var ensure = require('../index.js').ensure;
 
 function assertThrows(f, msg) {
@@ -194,7 +195,7 @@ describe('ensure', function () {
         'Expected undefined to be exactly 1.');
       assertThrows(function() { ensure(undefined).named('f').isExactly(1); },
         'Expected f to be exactly 1, actual value was undefined.');
-        assertThrows(function() { ensure(null).isExactly(''); },
+      assertThrows(function() { ensure(null).isExactly(''); },
           'Expected null to be exactly "".');
     });
 
@@ -365,9 +366,11 @@ describe('ensure', function () {
       ensure([1, 2, 1, 2]).containsAllOf(2, 1, 2).inOrder();
       ensure([1, 2, 1, 2]).containsAllOf(1, 2, 1, 2).inOrder();
       assertThrows(function() { ensure([1, 2]).containsAllOf(2, 1).inOrder(); },
-        'Expected [1, 2] to contain elements [2, 1] in order, but contains only these elements in order: [2].');
+        'Expected [1, 2] to contain elements [2, 1] in order, but contains only these elements ' +
+        'in order: [2].');
       assertThrows(function() { ensure([1, 2, 1, 2]).containsAllOf(2, 1, 1).inOrder(); },
-        'Expected [1, 2, 1, 2] to contain elements [2, 1, 1] in order, but contains only these elements in order: [2, 1].');
+        'Expected [1, 2, 1, 2] to contain elements [2, 1, 1] in order, but contains only these ' +
+        'elements in order: [2, 1].');
       assertThrows(function() { ensure([1, 2]).named('array').containsAllOf(3).inOrder(); },
         'Expected array to contain elements [3], is missing [3].');
     });
@@ -389,7 +392,8 @@ describe('ensure', function () {
       assertThrows(function() { ensure([1, 2, 2]).named('array').containsExactly(1); },
         'Expected array to contain exactly elements [1], extra elements [2, 2].');
       assertThrows(function() { ensure(['a', 'b']).containsExactly(3); },
-        'Expected ["a", "b"] to contain exactly elements [3], is missing [3], extra elements ["a", "b"].');
+        'Expected ["a", "b"] to contain exactly elements [3], is missing [3], extra elements ' +
+        '["a", "b"].');
     });
 
     it('.containsExactly.inOrder', function() {
@@ -397,9 +401,11 @@ describe('ensure', function () {
       ensure([1, 2, 1, 2]).containsExactly(1, 2, 1, 2).inOrder();
       ensure([1, 1, 2, 2]).containsExactly(1, 1, 2, 2).inOrder();
       assertThrows(function() { ensure([1, 2]).containsExactly(2, 1).inOrder(); },
-        'Expected [1, 2] to contain exactly elements [2, 1] in order, but contains only these elements in order: [].');
+        'Expected [1, 2] to contain exactly elements [2, 1] in order, but contains only these ' +
+        'elements in order: [].');
       assertThrows(function() { ensure([1, 2, 1, 2]).containsExactly(1, 2, 2, 1).inOrder(); },
-        'Expected [1, 2, 1, 2] to contain exactly elements [1, 2, 2, 1] in order, but contains only these elements in order: [1, 2].');
+        'Expected [1, 2, 1, 2] to contain exactly elements [1, 2, 2, 1] in order, but contains ' +
+        'only these elements in order: [1, 2].');
       assertThrows(function() { ensure([1, 2]).named('array').containsExactly(3).inOrder(); },
         'Expected array to contain exactly elements [3], is missing [3], extra elements [1, 2].');
     });
@@ -492,4 +498,99 @@ describe('ensure', function () {
         'Expected [object Object] to have a field \'a\' with value 2, actual value was 1.');
     });
   });
+
+  if (typeof Promise !== 'undefined') {
+    describe('PromiseSubject', function () {
+      it('.succeeds()', function() {
+        return ensure(Promise.resolve(true)).succeeds();
+      });
+      it('.succeeds() (fails)', function(done) {
+        ensure(Promise.reject(true)).succeeds().then(
+          function () {
+            throw new Error('expected .succeeds() to fail.');
+          },
+          function (reason) {
+            done();
+            return reason;
+          });
+      });
+      it('.fails()', function() {
+        return ensure(Promise.reject(new Error('some error'))).fails();
+      });
+      it('.fails() (succeeds)', function(done) {
+        return ensure(Promise.resolve(1)).fails().then(
+          function () {
+            throw new Error('expected .fails() to fail.');
+          },
+          function (reason) {
+            done();
+            return reason;
+          });
+      });
+      it('.succeedsWith()', function() {
+        return ensure(Promise.resolve(true)).succeedsWith(true);
+      });
+      it('.succeedsWith() (fails)', function(done) {
+        ensure(Promise.reject(true)).succeedsWith(true).then(
+          function () {
+            throw new Error('expected .succeedsWith() to fail.');
+          },
+          function (reason) {
+            done();
+            return reason;
+          });
+      });
+      it('.failsWith()', function() {
+        return ensure(Promise.reject('some error')).failsWith('some error');
+      });
+      it('.failsWith() (succeeds)', function(done) {
+        return ensure(Promise.resolve(1)).failsWith(1).then(
+          function () {
+            throw new Error('expected .failsWith() to fail.');
+          },
+          function (reason) {
+            done();
+            return reason;
+          });
+      });
+      it('.eventually().isTrue()', function() {
+        return ensure(Promise.resolve(true)).eventually().isTrue();
+      });
+      it('.eventually().equals()', function() {
+        return ensure(Promise.resolve(7)).eventually().equals(7);
+      });
+      it('.eventually().contains()', function() {
+        return ensure(Promise.resolve([7])).eventually().contains(7);
+      });
+      it('.eventually().isTrue() (with timer)', function() {
+        // Try it with a promise that doesn't immediately resolve.
+        var promise = new Promise(function(onFulfilled, _onRejected) {
+          setTimeout(function() { onFulfilled(true); }, 10);
+        });
+        return ensure(promise).eventually().isTrue();
+      });
+      it('.eventually() handles failure', function(done) {
+        // Resolve with a value which will cause the assertion to fail.
+        ensure(Promise.resolve(false)).eventually().isTrue().then(
+          function () {
+            throw new Error('expected rejection.');
+          },
+          function (reason) {
+            ensure(reason).equals('Error: Expected false to be true.');
+            done();
+          });
+      });
+      it('.eventually() detects rejection', function(done) {
+        ensure(Promise.reject(false)).eventually().isTrue().then(
+          function () {
+            throw new Error('expected rejection.');
+          },
+          function (reason) {
+            ensure(reason).equals(
+              'Error: Expected promise [object Object] to succeed, but failed with false.');
+            done();
+          });
+      });
+    });
+  }
 });
