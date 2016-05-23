@@ -7,12 +7,6 @@ TODO:
 ```
 expect(value) -- reports error but does not fail the test.
 
-// Strings:
-// .contains(str)
-// .startsWith(str)
-// .endsWith(str)
-// .matches(regex)
-
 // Maps
 // .containsKey(value)
 // .doesNotContainKey(value)

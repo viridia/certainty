@@ -34,7 +34,7 @@ ensure(width).named('width').isGreaterThan(100);
 
 reports:
 
-```
+```sh
 Error: Expected width to be greater than 100.
 ```
 
@@ -197,6 +197,15 @@ ensure(someObject).hasOwnField(key).withValue(expectedValue);
 
 ### String assertions
 
+```javascript
+ensure(someString).isEmpty();
+ensure(someString).isNotEmpty();
+ensure(someString).includes(subString);
+ensure(someString).startsWith(subString);
+ensure(someString).endsWith(subString);
+ensure(someString).matches(regex);
+```
+
 ### ES2015 collection assertions
 
 Certainty will detect if the ES2015 `Map` and `Set` classes are present, and if so, it will add
@@ -206,7 +215,7 @@ support for these collection types.
 
 Certainty supports assertions on JavaScript Promises if they are available in the environment.
 Note that if you are transpiling your application with Babel in order to get Promise support,
-you'll need to transpile Certainty as well.
+you will need to transpile Certainty as well.
 
 The `PromiseSubject.eventually()` method returns a subject that supports the standard assertions
 methods, but waits until the promise has resolved before executing those assertions. The set
