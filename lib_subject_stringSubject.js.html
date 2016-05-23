@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SubjectFactory - Documentation</title>
+    <title>lib/subject/stringSubject.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,471 +28,104 @@
 
 <div id="main">
     
-    <h1 class="page-title">SubjectFactory</h1>
-    
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-            <span class="ancestors"><a href="module-certainty.html">certainty</a>~</span>
-        
-        SubjectFactory
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    <h4 class="name" id="SubjectFactory"><span class="type-signature"></span>new SubjectFactory<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Singleton factory that accepts a value to be tested, queries it's type, and constructs
-    an appropriate Subject type to wrap it.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_subject_factory.js.html">lib/subject/factory.js</a>, <a href="lib_subject_factory.js.html#line13">line 13</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="addType"><span class="type-signature"></span>addType<span class="signature">(typeTest, func)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Register a new type with the factory.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>typeTest</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A function which returns true when the type is recognized.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>func</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">FailureStrategy</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Constructor function for the subject for this type.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_subject_factory.js.html">lib/subject/factory.js</a>, <a href="lib_subject_factory.js.html#line52">line 52</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="newSubject"><span class="type-signature"></span>newSubject<span class="signature">(failureStrategy, value)</span><span class="type-signature"> &rarr; {Subject}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create a new Subject instance given a value. The factory will look through the list of
-    registered types to find a subject constructor function, and return the appropriate Subject
-    subclass for that value type.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>failureStrategy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">FailureStrategy</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The failure strategy to use when an assertion fails.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The value being checked.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_subject_factory.js.html">lib/subject/factory.js</a>, <a href="lib_subject_factory.js.html#line64">line 64</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>A subject instance.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Subject</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">lib/subject/stringSubject.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module certainty */
+var format = require('../format');
+var Subject = require('./subject');
+
+/** Subclass of Subject which provides assertions methods for string types.
+    @param {FailureStrategy} failureStrategy The failure strategy to use when an assertion fails.
+    @param {object} value The value being checked.
+    @constructor
+    @extends Subject
+*/
+function StringSubject(failureStrategy, value) {
+  Subject.call(this, failureStrategy, value);
+}
+StringSubject.prototype = Object.create(Subject.prototype);
+StringSubject.prototype.constructor = StringSubject;
+
+/** Ensure that the string being tested is the empty string.
+    @return {ObjectSubject} `this` for chaining.
+*/
+StringSubject.prototype.isEmpty = function () {
+  if (this.value !== '') {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be the empty string.');
+  }
+  return this;
+};
+
+/** Ensure that the object being tested is not the empty string.
+    @return {ObjectSubject} `this` for chaining.
+*/
+StringSubject.prototype.isNotEmpty = function () {
+  if (this.value === '') {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be non-empty.');
+  }
+  return this;
+};
+
+/** Ensure that the string being tested contains the expected substring.
+    @param {string} expected The substring which this string is expected to contain.
+    @return {ObjectSubject} `this` for chaining.
+*/
+StringSubject.prototype.includes = function (expected) {
+  if (!this.value.includes(expected)) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to include ' +
+      format(expected) + '.');
+  }
+  return this;
+};
+
+/** Ensure that the string being tested starts with the expected substring.
+    @param {string} expected The substring which this string is expected start with.
+    @return {ObjectSubject} `this` for chaining.
+*/
+StringSubject.prototype.startsWith = function (expected) {
+  if (!this.value.startsWith(expected)) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to start with ' +
+      format(expected) + '.');
+  }
+  return this;
+};
+
+/** Ensure that the string being tested ends with the expected substring.
+    @param {string} expected The substring which this string is expected end with.
+    @return {ObjectSubject} `this` for chaining.
+*/
+StringSubject.prototype.endsWith = function (expected) {
+  if (!this.value.endsWith(expected)) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to end with ' +
+      format(expected) + '.');
+  }
+  return this;
+};
+
+/** Ensure that the string being tested matches the given regular expression.
+    @param {string} regex The regular expression.
+    @return {ObjectSubject} `this` for chaining.
+*/
+StringSubject.prototype.matches = function (regex) {
+  if (!this.value.match(regex)) {
+    this.failureStrategy.fail('Expected ' + this.describe() +
+      ' to match the regular expression ' + regex + '.');
+  }
+  return this;
+};
+
+module.exports = StringSubject;
+</code></pre>
+        </article>
+    </section>
 
 
 
