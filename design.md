@@ -1,11 +1,16 @@
 TODO:
 
-* equals failure should know about ref equals and types.
 * A way for objects to be tagged with a more readable description (as opposed to [Object object]).
 * Element subjects, such as hasAttribute.
 
 ```
 expect(value) -- reports error but does not fail the test.
+
+// Numbers
+// .isNaN
+// .isInfinite
+// .isFinite
+// .isInteger
 
 // Maps
 // .containsKey(value)
@@ -20,7 +25,7 @@ expect(value) -- reports error but does not fail the test.
 // .containsNoneOf
 // .doesNotContain
 
-// Array:
+// Arrays
 // .isOrdered(opt_comparator)
 // .isPartiallyOrdered(opt_comparator)
 
@@ -40,5 +45,8 @@ expect(value) -- reports error but does not fail the test.
 // .hasId(id)
 // .hasTabIndex()
 // .matches(selector)
+
+// Date?
+
 
 ```

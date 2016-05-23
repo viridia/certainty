@@ -7,6 +7,12 @@ module.exports = function(config) {
     files: [
       'test/**/*.js'
     ],
+    client: {
+      mocha: {
+        reporter: 'html', // change Karma's debug.html to the mocha web reporter
+        ui: 'bdd'
+      }
+    },
     reporters: [ 'progress' ],
     colors: true,
     logLevel: config.LOG_INFO,
