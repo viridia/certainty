@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/subject/arraySubject.js - Documentation</title>
+    <title>lib/subject/setSubject.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/subject/arraySubject.js</h1>
+    <h1 class="page-title">lib/subject/setSubject.js</h1>
     
 
     
@@ -39,129 +39,108 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/** @module certainty */
+/* global Set */
 var format = require('../format');
 var Subject = require('./subject');
-var ProxyBase = require('./proxy');
 
-/** Fluent context object used to add an in-order assertion to a contains test.
-    @constructor
-*/
-function InOrder() {}
-InOrder.INSTANCE = new InOrder();
-
-/** Asserts that the array elements previously tested are not only present in the array but
-    present in order as well.
-*/
-InOrder.prototype.inOrder = function () {}
-ProxyBase.addMethods(InOrder);
-
-/** Fluent context object used when we know that an in-order assertion would have failed.
-    @param {ArraySubject} subject The subject.
-    @param {string} msg The message to display when we attempt an in-order assertion.
-    @constructor
-    @private
-*/
-function NotInOrder(subject, msg) {
-  this.subject = subject;
-  this.msg = msg;
-}
-
-/** Asserts that the array elements previously tested are not only present in the array but
-    present in order as well. Since we already know this is false, this function always fails.
-*/
-NotInOrder.prototype.inOrder = function () {
-  this.subject.fail(this.msg);
-}
-
-/** Subject subclass which provides assertion methods for array types.
+/** Subclass of Subject which provides assertions methods for Set types.
     @param {FailureStrategy} failureStrategy The failure strategy to use when an assertion fails.
-    @param {*} value The value being checked.
+    @param {object} value The value being checked.
     @constructor
     @extends Subject
 */
-function ArraySubject(failureStrategy, value) {
+function SetSubject(failureStrategy, value) {
   Subject.call(this, failureStrategy, value);
 }
-ArraySubject.prototype = Object.create(Subject.prototype);
-ArraySubject.prototype.constructor = ArraySubject;
+SetSubject.prototype = Object.create(Subject.prototype);
+SetSubject.prototype.constructor = SetSubject;
 
-/** Ensure that the array is empty.
-    @return {ArraySubject} `this` for chaining.
+/** Ensure that the set is empty. This only checks for fields on the object, not
+    its prototype.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.isEmpty = function () {
-  if (this.value.length != 0) {
-    this.failureStrategy.fail('Expected ' + this.describe() + ' to be empty.');
+SetSubject.prototype.isEmpty = function () {
+  if (this.value.size !== 0) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be an empty set.');
   }
   return this;
 };
 
-/** Ensure that the array is a not empty.
-    @return {ArraySubject} `this` for chaining.
+/** Ensure that the set is non-empty. This only checks for fields on the object,
+    not its prototype.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.isNotEmpty = function () {
-  if (this.value.length == 0) {
-    this.failureStrategy.fail('Expected ' + this.describe() + ' to be non-empty.');
+SetSubject.prototype.isNotEmpty = function () {
+  if (this.value.size === 0) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be a non-empty set.');
   }
   return this;
 };
 
-/** Ensure that the array has a length equal to the specified length.
-    @param {number} length The expected length.
-    @return {Subject} `this` for chaining.
+/** Ensure that the set is the expected size.
+    @param {number} size The expected size of the set.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.hasLength = function (length) {
-  if (this.value.length != length) {
-    this.failureStrategy.fail('Expected ' + this.describe() + ' to have length ' + length
-      + ', but was ' + this.value.length + '.');
+SetSubject.prototype.hasSize = function (size) {
+  if (this.value.size !== size) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to be of size ' + size +
+      ', actual size was ' + this.value.size + '.');
   }
   return this;
 };
 
-/** Ensure that the array contains the given element.
-    @param {*} element The element that the value is expected to contain.
-    @return {ArraySubject} `this` for chaining.
+/** Ensure that the set contains a given item
+    @param {*} item The expected item.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.contains = function (element) {
-  var i = this.value.indexOf(element);
-  if (i &lt; 0) {
-    this.failureStrategy.fail('Expected ' + this.describe() + ' to contain ' +
-      format(element, 30) + '.');
+SetSubject.prototype.contains = function (value) {
+  if (!this.value.has(value)) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to contain ' + format(value) + '.');
   }
   return this;
 };
 
-/** Ensure that the array contains all of the elements specified.
-    @param {...*} elements The elements that the array must contain.
-    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
-      given elements
+/** Ensure that the set does not contain a given item
+    @param {*} item The expected item.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsAllOf = function () {
+SetSubject.prototype.doesNotContain = function (value) {
+  if (this.value.has(value)) {
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to not contain ' +
+      format(value) + '.');
+  }
+  return this;
+};
+
+/** Ensure that the set contains all of the elements specified.
+    @param {...*} elements The elements that the set must contain.
+    @return {SetSubject} `this` for chaining.
+*/
+SetSubject.prototype.containsAllOf = function () {
   return this.containsAllIn(arguments);
 };
 
-/** Ensure that the array contains exactly the elements specified.
-    @param {...*} elements The elements that the array must contain.
-    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
-      given elements
+/** Ensure that the set contains exactly the elements specified.
+    @param {...*} elements The elements that the set must contain.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsExactly = function () {
+SetSubject.prototype.containsExactly = function () {
   return this.containsExactlyIn(arguments);
 };
 
-/** Ensure that the array contains any of the elements specified.
-    @param {...*} elements The elements that the array must contain.
-    @return {ArraySubject} `this` for chaining.
+/** Ensure that the set contains any of the elements specified.
+    @param {...*} elements The elements that the set must contain.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsAnyOf = function () {
+SetSubject.prototype.containsAnyOf = function () {
   return this.containsAnyIn(arguments);
 };
 
-/** Ensure that the array contains none of the elements specified.
-    @param {...*} elements The elements that the array must not contain.
-    @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
-      given elements
+/** Ensure that the set contains none of the elements specified.
+    @param {...*} elements The elements that the set must not contain.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsNoneOf = function () {
+SetSubject.prototype.containsNoneOf = function () {
   return this.containsNoneIn(arguments);
 };
 
@@ -170,45 +149,21 @@ ArraySubject.prototype.containsNoneOf = function () {
     @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
       given elements.
 */
-ArraySubject.prototype.containsAllIn = function (elements) {
-  var inOrder = true;
-  var nextIndex = 0;
-  var elementsInOrder = [];
+SetSubject.prototype.containsAllIn = function (elements) {
   var missing = [];
   for (var key in elements) {
     var el = elements[key];
-    var index = this.value.indexOf(el, nextIndex);
-    if (index &lt; 0) {
-      index = this.value.indexOf(el);
-      if (index &lt; 0) {
-        missing.push(el);
-        continue;
-      }
-      inOrder = false;
-    } else {
-      nextIndex = index + 1;
-      if (inOrder) {
-        elementsInOrder.push(el);
-      }
+    if (!this.value.has(el)) {
+      missing.push(el);
     }
   }
 
   if (missing.length > 0) {
-    this.failureStrategy.fail('Expected ' + this.describe() + ' to contain elements ' +
+    this.failureStrategy.fail('Expected ' + this.describe() + ' to contain all of ' +
       format(Array.prototype.slice.call(elements)) + ', is missing ' + format(missing) + '.');
-    return InOrder.INSTANCE; // No need to fail twice
   }
 
-  if (!inOrder) {
-    // We succeeded, but the elements are out of order, so return an object which fails if they
-    // as for an order check.
-    var msg = 'Expected ' + this.describe() + ' to contain elements ' +
-      format(Array.prototype.slice.call(elements)) +
-      ' in order, but contains only these elements in order: ' +
-      format(elementsInOrder) + '.';
-    return new NotInOrder(this, msg);
-  }
-  return InOrder.INSTANCE;
+  return this;
 };
 
 /** Ensure that the array contains exactly the elements specified.
@@ -216,62 +171,42 @@ ArraySubject.prototype.containsAllIn = function (elements) {
     @return {InOrder} An InOrder object which allows the 'inOrder' assertion for the
       given elements
 */
-ArraySubject.prototype.containsExactlyIn = function (elements) {
-  var inOrder = true;
-  var elementsInOrder = [];
+SetSubject.prototype.containsExactlyIn = function (elements) {
+  var extra = new Set(this.value);
   var missing = [];
-  var elts = this.value.slice();
-  var msg;
   for (var key in elements) {
     var el = elements[key];
-    var index = elts.indexOf(el);
-    if (index &lt; 0) {
-      missing.push(el);
+    if (this.value.has(el)) {
+      extra.delete(el);
     } else {
-      if (index != 0) {
-        inOrder = false;
-      }
-      if (inOrder) {
-        elementsInOrder.push(el);
-      }
-      elts.splice(index, 1);
+      missing.push(el);
     }
   }
 
-  if (missing.length || elts.length) {
+  var msg;
+  if (missing.length || extra.size) {
     msg = 'Expected ' + this.describe() + ' to contain exactly elements ' +
       format(Array.prototype.slice.call(elements));
     if (missing.length) {
       msg += ', is missing ' + format(missing);
     }
-    if (elts.length) {
-      msg += ', extra elements ' + format(elts);
+    if (extra.size) {
+      msg += ', extra elements ' + format(Array.from(extra));
     }
     msg += '.';
     this.failureStrategy.fail(msg);
-    return InOrder.INSTANCE; // We already failed, no need to fail again.
   }
-
-  if (!inOrder) {
-    msg = 'Expected ' + this.describe() + ' to contain exactly elements ' +
-      format(Array.prototype.slice.call(elements)) +
-      ' in order, but contains only these elements in order: ' +
-      format(elementsInOrder) + '.';
-    return new NotInOrder(this, msg);
-  }
-
-  return InOrder.INSTANCE;
+  return this;
 };
 
 /** Ensure that the array contains any of the elements specified.
     @param {Iterable} elements Iterable which produces the elements that the array must contain.
-    @return {ArraySubject} `this` for chaining.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsAnyIn = function (elements) {
+SetSubject.prototype.containsAnyIn = function (elements) {
   for (var key in elements) {
     var el = elements[key];
-    var index = this.value.indexOf(el);
-    if (index >= 0) {
+    if (this.value.has(el)) {
       return this;
     }
   }
@@ -282,13 +217,12 @@ ArraySubject.prototype.containsAnyIn = function (elements) {
 
 /** Ensure that the array contains none of the elements specified.
     @param {Iterable} elements Iterable which produces the elements that the array must not contain.
-    @return {ArraySubject} `this` for chaining.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsNoneIn = function (elements) {
+SetSubject.prototype.containsNoneIn = function (elements) {
   for (var key in elements) {
     var el = elements[key];
-    var index = this.value.indexOf(el);
-    if (index >= 0) {
+    if (this.value.has(el)) {
       this.failureStrategy.fail('Expected ' + this.describe() + ' to contain none of ' +
         format(Array.prototype.slice.call(elements)) + ', however it contains ' + format(el) + '.');
       return this;
@@ -300,12 +234,12 @@ ArraySubject.prototype.containsNoneIn = function (elements) {
 /** Ensure that at least one element of the array satisfies a test function.
     @param {string} verb A description of the test, such as 'be even' or 'be prime'.
     @param {Function} testFn The test that elements must satisfy.
-    @return {ArraySubject} `this` for chaining.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsAny = function (verb, testFn) {
-  for (var i = 0; i &lt; this.value.length; ++i) {
-    var el = this.value[i];
-    if (testFn(el)) {
+SetSubject.prototype.containsAny = function (verb, testFn) {
+  var iter = this.value.values();
+  for (var i = iter.next(); !i.done; i = iter.next()) {
+    if (testFn(i.value)) {
       return this;
     }
   }
@@ -316,12 +250,12 @@ ArraySubject.prototype.containsAny = function (verb, testFn) {
 /** Ensure that at all the elements of the array satisfy a test function.
     @param {string} verb A description of the test, such as 'be even' or 'be prime'.
     @param {Function} testFn The test that elements must satisfy.
-    @return {ArraySubject} `this` for chaining.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsAll = function (verb, testFn) {
-  for (var i = 0; i &lt; this.value.length; ++i) {
-    var el = this.value[i];
-    if (!testFn(el)) {
+SetSubject.prototype.containsAll = function (verb, testFn) {
+  var iter = this.value.values();
+  for (var i = iter.next(); !i.done; i = iter.next()) {
+    if (!testFn(i.value)) {
       this.failureStrategy.fail('Expected all elements of ' + this.describe() + ' to ' +
         verb + '.');
       return this;
@@ -333,12 +267,12 @@ ArraySubject.prototype.containsAll = function (verb, testFn) {
 /** Ensure that at none the elements of the array satisfy a test function.
     @param {string} verb A description of the test, such as 'be even' or 'be prime'.
     @param {Function} testFn The test that elements must satisfy.
-    @return {ArraySubject} `this` for chaining.
+    @return {SetSubject} `this` for chaining.
 */
-ArraySubject.prototype.containsNone = function (verb, testFn) {
-  for (var i = 0; i &lt; this.value.length; ++i) {
-    var el = this.value[i];
-    if (testFn(el)) {
+SetSubject.prototype.containsNone = function (verb, testFn) {
+  var iter = this.value.values();
+  for (var i = iter.next(); !i.done; i = iter.next()) {
+    if (testFn(i.value)) {
       this.failureStrategy.fail('Expected no elements of ' + this.describe() + ' to ' + verb + '.');
       return this;
     }
@@ -346,7 +280,7 @@ ArraySubject.prototype.containsNone = function (verb, testFn) {
   return this;
 };
 
-module.exports = ArraySubject;
+module.exports = SetSubject;
 </code></pre>
         </article>
     </section>
