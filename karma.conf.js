@@ -13,7 +13,7 @@ module.exports = function(config) {
         ui: 'bdd'
       }
     },
-    reporters: [ 'progress' ],
+    reporters: [ 'mocha' ],
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
