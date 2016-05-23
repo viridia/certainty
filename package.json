@@ -1,7 +1,7 @@
 {
   "name": "certainty",
-  "version": "0.0.1",
-  "description": "Full-featured assertion library with friendly error messages.",
+  "version": "0.0.3",
+  "description": "Full-featured JavaScript assertion library with friendly error messages.",
   "main": "index.js",
   "scripts": {
     "jsdoc": "jsdoc -c conf.json",
