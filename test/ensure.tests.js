@@ -307,4 +307,20 @@ describe('ensure', function () {
     assertThrows(function() { ensure([]).isNotInstanceOf(Array); },
       'Expected [] to not be instance of Array.');
   });
+
+  it('.isIn', function() {
+    ensure(1).isIn([1, 2, 3]);
+    /* global Set */
+    if (typeof Set != 'undefined') {
+      ensure(1).isIn(new Set([1, 2, 3]));
+    }
+    ensure('a').isIn(['a', 'b', 'c']);
+    assertThrows(function() { ensure(1).isIn([2, 3]); },
+      'Expected 1 to be in [2, 3].');
+  });
+
+  it('.withFailureMessage', function() {
+    assertThrows(function() { ensure(false).withFailureMessage('Not true!').isTrue(); },
+      'Not true!');
+  });
 });

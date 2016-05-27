@@ -68,6 +68,15 @@ ensure(10).isGreaterThan(100);
 ensure(10).named('width').isGreaterThan(100);
 ```
 
+### Custom failure messages
+
+You can override the default failure message using `.withFailureMessage()`:
+
+```javascript
+// Prints: '10 is not big enough!'
+ensure(10).withFailureMessage('10 is not big enough!').isGreaterThan(100);
+```
+
 ### Type-specific Subjects
 
 The set of assertion methods available depends on the runtime type of the test expression. For
@@ -150,6 +159,16 @@ ensure(someValue).isNotLessThan(otherValue);
 ensure(someValue).isInstanceOf(class);
 ensure(someValue).isNotInstanceOf(class);
 ensure(someValue).hasType(type);
+```
+
+#### Other tests
+```javascript
+// Ensure that the test expression is one of a known set of values.
+ensure(someValue).isIn(array);
+ensure(someValue).isIn(set);
+
+// Example:
+ensure('alpha').isIn(['alpha', 'beta', 'gamma']);
 ```
 
 ### Array assertions
