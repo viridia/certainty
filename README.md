@@ -3,6 +3,8 @@
 * [GitHub project page](https://github.com/viridia/certainty)
 * [JSDocs](https://viridia.github.io/certainty)
 * [npm package](https://www.npmjs.com/package/certainty)
+* Extensions:
+  * [Certainty-DOM](https://github.com/viridia/certainty-dom)
 
 ## Introduction
 
@@ -189,6 +191,10 @@ ensure(someArray).containsNone(verb, testFn);
 
 // Example: Prints 'Error: Expected all elements of [1, 2, 3] to be even.'
 ensure([1, 2, 3]).containsAll('be even', (el) => n % 2 == 0));
+
+// .eachElement() applies an assertion method to every element in the array.
+ensure(someArray).eachElement().isGreaterThan(3);
+ensure(someArray).eachElement().hasType('string');
 ```
 
 ### Object assertions
@@ -248,6 +254,10 @@ ensure(someSet).containsNoneIn(elementList);
 ensure(someSet).containsAny(verb, testFn);
 ensure(someSet).containsAll(verb, testFn);
 ensure(someSet).containsNone(verb, testFn);
+
+// .eachMember() applies an assertion method to every member of the set.
+ensure(someSet).eachMember().isGreaterThan(3);
+ensure(someSet).eachMember().hasType('string');
 ```
 
 ### Promise assertions

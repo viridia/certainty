@@ -159,4 +159,10 @@ describe('ensure.array', function () {
     assertThrows(function() { ensure([1, 2]).containsNone('be even', isEven); },
       'Expected no elements of [1, 2] to be even.');
   });
+
+  it('.eachElement', function() {
+    ensure([3, 4, 5]).eachElement().isGreaterThan(2);
+    assertThrows(function() { ensure([3, 4, 5]).eachElement().isLessThan(2); },
+      'Expected element 0 of [3, 4, 5] to be less than 2, actual value was 3.');
+  });
 });

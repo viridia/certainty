@@ -106,5 +106,11 @@ if (typeof Set !== 'undefined') {
       assertThrows(function() { ensure(new Set([1, 2])).containsNone('be even', isEven); },
         'Expected no elements of Set([1, 2]) to be even.');
     });
+
+    it('.eachMember', function() {
+      ensure(new Set([3, 4, 5])).eachMember().isGreaterThan(2);
+      assertThrows(function() { ensure(new Set([3, 4, 5])).eachMember().isLessThan(2); },
+        'Expected member of Set([3, 4, 5]) to be less than 2, actual value was 3.');
+    });
   });
 }

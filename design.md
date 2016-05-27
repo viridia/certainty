@@ -1,10 +1,14 @@
 TODO:
 
 * A way for objects to be tagged with a more readable description (as opposed to [Object object]).
-* Element subjects, such as hasAttribute.
+* Refactor .withValue()
+* Extend subjects to formatting.
 
 ```
 expect(value) -- reports error but does not fail the test.
+
+// General
+// .isIn(array or set)
 
 // Numbers
 // .isNaN
@@ -17,14 +21,6 @@ expect(value) -- reports error but does not fail the test.
 // .doesNotContainKey(value)
 // .containsEntry(key, value)
 
-// Sets
-// .contains
-// .containsAnyOf / .containsAnyIn / .containsAny
-// .containsAllOf
-// .containsExactly
-// .containsNoneOf
-// .doesNotContain
-
 // Arrays
 // .isOrdered(opt_comparator)
 // .isPartiallyOrdered(opt_comparator)
@@ -33,20 +29,13 @@ expect(value) -- reports error but does not fail the test.
 // .accepts?
 
 // DOM
-// .hasAttribute(name).withValue(value)
-// .hasTagName(name)
-// .isElement()
 // .isParentOf(node)
-// .hasClass(className)
-// .hasClasses(classList)
-// .doesNotHaveClass(className)
+// .isChildOf(node)
+// .hasClasses(classList) all ? any ? none ?
 // .doesNotHaveClasses(classNames)
-// .hasChildCount(count)
 // .hasId(id)
 // .hasTabIndex()
-// .matches(selector)
 
 // Date?
-
 
 ```
