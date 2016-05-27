@@ -279,6 +279,19 @@ ensure(someSet).eachMember().isGreaterThan(3);
 ensure(someSet).eachMember().hasType('string');
 ```
 
+#### Map assertions
+
+```javascript
+ensure(someMap).isEmpty();
+ensure(someMap).isNotEmpty();
+ensure(someMap).hasSize(size);
+
+// Accepts a single element value
+ensure(someMap).containsKey(key).withValue(value);
+ensure(someMap).doesNotContainKey(key);
+ensure(someMap).containsEntry(key, value);
+```
+
 ### Promise assertions
 
 Certainty supports assertions on JavaScript Promises if they are available in the environment.

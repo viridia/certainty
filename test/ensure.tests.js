@@ -148,7 +148,7 @@ describe('ensure', function () {
         .isEqualTo('a very long string that has a whole lot of characters'); },
         'Expected value differs from actual value starting at character 53:\n' +
           '  expected: "...ot of characters"\n' +
-          '    actual: "...ot of characters, maybe as many ..."');
+          '    actual: "...ot of characters, maybe as many as eighty"');
   });
 
   it('.equals', function() {
@@ -224,7 +224,7 @@ describe('ensure', function () {
         .isDeeplyEqualTo('a very long string that has a whole lot of characters'); },
         'Expected value differs from actual value starting at character 53:\n' +
           '  expected: "...ot of characters"\n' +
-          '    actual: "...ot of characters, maybe as many ..."');
+          '    actual: "...ot of characters, maybe as many as eighty"');
     assertThrows(function() {
       ensure({ a: 1 }).named('v').isDeeplyEqualTo({ a: 2 }); },
         'Expected v.a to be 2, actual value was 1.');

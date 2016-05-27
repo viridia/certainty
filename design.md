@@ -7,19 +7,11 @@ TODO:
 ```
 expect(value) -- reports error but does not fail the test.
 
-// General
-// .isIn(array or set)
-
 // Numbers
 // .isNaN
 // .isInfinite
 // .isFinite
 // .isInteger
-
-// Maps
-// .containsKey(value)
-// .doesNotContainKey(value)
-// .containsEntry(key, value)
 
 // Arrays
 // .isOrdered(opt_comparator)
