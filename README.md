@@ -5,6 +5,7 @@
 * [npm package](https://www.npmjs.com/package/certainty)
 * Extensions:
   * [Certainty-DOM](https://github.com/viridia/certainty-dom)
+  * [Certainty-Selenium](https://github.com/viridia/certainty-selenium)
 
 ## Introduction
 
