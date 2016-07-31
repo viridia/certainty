@@ -31,6 +31,12 @@ describe('ensure.string', function () {
       'Expected "abc" to include "ac".');
   });
 
+  it('.doesNotInclude', function() {
+    ensure('abc').doesNotInclude('ac');
+    assertThrows(function() { ensure('abc').doesNotInclude('ab'); },
+      'Expected "abc" to not include "ab".');
+  });
+
   it('.startsWith', function() {
     ensure('abc').startsWith('a');
     assertThrows(function() { ensure('abc').startsWith('b'); },

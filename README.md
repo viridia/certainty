@@ -236,6 +236,7 @@ Assertions on strings are provided by [`StringSubject`][StringSubject]:
 ensure(someString).isEmpty();
 ensure(someString).isNotEmpty();
 ensure(someString).includes(subString);
+ensure(someString).doesNotInclude(subString);
 ensure(someString).startsWith(subString);
 ensure(someString).endsWith(subString);
 ensure(someString).matches(regex);
