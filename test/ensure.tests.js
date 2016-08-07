@@ -186,7 +186,7 @@ describe('ensure', function () {
     ensure('').isExactly('');
     ensure(obj).isExactly(obj);
     assertThrows(function() { ensure({}).isExactly({}); },
-      'Expected [object Object] to be exactly [object Object].');
+      'Expected {} to be exactly {}.');
     assertThrows(function() { ensure(null).isExactly(1); },
       'Expected null to be exactly 1.');
     assertThrows(function() { ensure(undefined).isExactly(1); },
