@@ -226,6 +226,8 @@ ensure(someObject).isEmpty();
 ensure(someObject).isNotEmpty();
 ensure(someObject).hasField(key).withValue(expectedValue);
 ensure(someObject).hasOwnField(key).withValue(expectedValue);
+ensure(someObject).doesNotHaveField(key);
+ensure(someObject).doesNotHaveOwnField(key);
 ```
 
 ### String assertions
