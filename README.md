@@ -5,6 +5,7 @@
 * [npm package](https://www.npmjs.com/package/certainty)
 * Extensions:
   * [Certainty-DOM](https://github.com/viridia/certainty-dom)
+  * [Certainty-Selenium](https://github.com/viridia/certainty-selenium)
 
 ## Introduction
 
@@ -12,14 +13,14 @@
 messages more readable and discoverable, while being extensible to new types of objects.
 
 Certainty is largely inspired by [Truth](http://google.github.io/truth/), a Java-based testing
-framework.
+framework created by Google.
 
-Certainty provides assertions, and is designed to work in conjunction with popular testing
+Certainty provides assertion methods, and is designed to work in conjunction with popular testing
 frameworks such as [Mocha](https://mochajs.org/) or mocking frameworks such as
 [Sinon](http://sinonjs.org/).
 
 Certainty adopts a fluent style for test propositions, and is extensible in several ways. It
-allows different actions to be taken on failure, the default being to throw an exception.
+allows different actions to be taken on failure, the default action being to throw an exception.
 
 ### A simple example:
 

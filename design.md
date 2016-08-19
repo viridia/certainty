@@ -1,12 +1,10 @@
 TODO:
 
 * A way for objects to be tagged with a more readable description (as opposed to [Object object]).
+* Extend subjects to formatting - i.e. allow for extensible formatting of non-standard types.
 * Refactor .withValue()
-* Extend subjects to formatting.
 
 ```
-expect(value) -- reports error but does not fail the test.
-
 // Numbers
 // .isNaN
 // .isInfinite

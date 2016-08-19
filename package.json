@@ -1,6 +1,6 @@
 {
   "name": "certainty",
-  "version": "0.4.0",
+  "version": "1.1.0",
   "description": "Full-featured JavaScript assertion library with friendly error messages.",
   "main": "index.js",
   "scripts": {
@@ -19,19 +19,19 @@
   "author": "Talin <viridia@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "eslint": "^2.9.0",
+    "browserify": "^13.1.0",
+    "eslint": "^3.2.0",
     "jsdoc": "^3.4.0",
-    "karma": "^0.13.22",
-    "karma-browserify": "^5.0.5",
+    "karma": "^1.1.2",
+    "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^1.0.1",
     "karma-firefox-launcher": "^1.0.0",
-    "karma-mocha": "^1.0.1",
-    "karma-mocha-reporter": "^2.0.3",
-    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-mocha": "^1.1.1",
+    "karma-mocha-reporter": "^2.1.0",
+    "karma-phantomjs-launcher": "^1.0.1",
     "minami": "^1.1.1",
-    "mocha": "^2.4.5",
-    "phantomjs-prebuilt": "^2.1.7",
+    "mocha": "^2.5.3",
+    "phantomjs-prebuilt": "^2.1.9",
     "watchify": "^3.7.0"
   },
   "directories": {
