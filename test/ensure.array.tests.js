@@ -165,4 +165,9 @@ describe('ensure.array', function () {
     assertThrows(function() { ensure([3, 4, 5]).eachElement().isLessThan(2); },
       'Expected element 0 of [3, 4, 5] to be less than 2, actual value was 3.');
   });
+
+  it('.eachElement.invalidMethod', function() {
+    assertThrows(function() { ensure([3, 4, 5]).eachElement().startsWith(); },
+      'Subject has no method named \'startsWith\'.');
+  });
 });
