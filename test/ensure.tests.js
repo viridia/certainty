@@ -203,6 +203,8 @@ describe('ensure', function () {
     ensure('').isDeeplyEqualTo('');
     ensure({}).isDeeplyEqualTo({});
     ensure({ a: 1 }).named('value').isDeeplyEqualTo({ a: 1 });
+    ensure([1, 2, 3]).isDeeplyEqualTo([1, 2, 3]);
+    ensure([{ a: 1 }]).isDeeplyEqualTo([{ a : 1}]);
     ensure(new Date('Sun May 15 2016 10:44:02 GMT-0700 (PDT)'))
       .isDeeplyEqualTo(new Date('Sun May 15 2016 10:44:02 GMT-0700 (PDT)'));
     ensure(/abc/g).isDeeplyEqualTo(/abc/g);
@@ -239,6 +241,17 @@ describe('ensure', function () {
         'Value missing expected property v.a.b with value 2.');
     assertThrows(function() { ensure(/abc/g).named('r').isDeeplyEqualTo(/abc/i); },
         'Expected r to be /abc/i, actual value was /abc/g.');
+    assertThrows(function() {
+      ensure({ a: 1, b: 'a' }).named('v').isDeeplyEqualTo(1); },
+        'Expected v to be 1, actual value was { a: 1, b: "a" }.');
+    assertThrows(function() {
+      ensure(1).named('v').isDeeplyEqualTo({ a: 1, b: 'a' }); },
+        'Expected v to be { a: 1, b: "a" }, actual value was 1.');
+    assertThrows(function() {
+      ensure(1).named('v').isDeeplyEqualTo([{ a: 1, b: 'a' }]); },
+        'Expected value of v differs from actual value:\n' +
+        '  expected: [{ a: 1, b: "a" }]\n' +
+        '    actual: 1');
     // TODO: Arrays, buffer, etc.
   });
 
