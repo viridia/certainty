@@ -62,6 +62,10 @@ describe('format (Object)', function () {
     ensure(format({})).equals('{}');
   });
 
+  it('should format an object with a null prototype', function() {
+    ensure(format(Object.create(null))).equals('{}');
+  });
+
   it('should format a simple object', function() {
     ensure(format({b: 1, a: true})).equals('{ a: true, b: 1 }');
   });
