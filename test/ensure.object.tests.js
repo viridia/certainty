@@ -41,6 +41,8 @@ describe('ensure.object', function () {
       'Expected {} to have a field named \'b\'.');
     assertThrows(function() { ensure({ a: 1 }).hasField('a').withValue(2); },
       'Expected { a: 1 } to have a field \'a\' with value 2, actual value was 1.');
+    assertThrows(function() { ensure({ a: 'str' }).hasField('a').withValue(2); },
+      'Expected { a: "str" } to have a field \'a\' with value 2, actual value was "str".');
   });
 
   it('.doesNotHaveField', function() {
