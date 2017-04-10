@@ -337,8 +337,10 @@ describe('ensure', function () {
       'Not true!');
   });
 
-  it('.withUndefinedMethod', function() {
-    assertThrows(function() { ensure([]).isBadMethod(Array); },
-      'ArraySubject has no method named \'isBadMethod\'.');
-  });
+  if (typeof Proxy === 'function') {
+    it('.withUndefinedMethod', function() {
+      assertThrows(function() { ensure([]).isBadMethod(Array); },
+        'ArraySubject has no method named \'isBadMethod\'.');
+    });
+  }
 });
