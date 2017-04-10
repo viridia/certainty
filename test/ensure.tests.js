@@ -323,4 +323,9 @@ describe('ensure', function () {
     assertThrows(function() { ensure(false).withFailureMessage('Not true!').isTrue(); },
       'Not true!');
   });
+
+  it('.withUndefinedMethod', function() {
+    assertThrows(function() { ensure([]).isBadMethod(Array); },
+      'ArraySubject has no method named \'isBadMethod\'.');
+  });
 });
