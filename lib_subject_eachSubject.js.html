@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SubjectFactory - Documentation</title>
+    <title>lib/subject/eachSubject.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,471 +28,54 @@
 
 <div id="main">
     
-    <h1 class="page-title">SubjectFactory</h1>
-    
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-            <span class="ancestors"><a href="module-certainty.html">certainty</a>~</span>
-        
-        SubjectFactory
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    <h4 class="name" id="SubjectFactory"><span class="type-signature"></span>new SubjectFactory<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Singleton factory that accepts a value to be tested, queries it's type, and constructs
-    an appropriate Subject type to wrap it.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_subject_factoryBase.js.html">lib/subject/factoryBase.js</a>, <a href="lib_subject_factoryBase.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="addType"><span class="type-signature"></span>addType<span class="signature">(typeTest, func)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Register a new type with the factory.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>typeTest</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A function which returns true when the type is recognized.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>func</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">FailureStrategy</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Constructor function for the subject for this type.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_subject_factoryBase.js.html">lib/subject/factoryBase.js</a>, <a href="lib_subject_factoryBase.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="newSubject"><span class="type-signature"></span>newSubject<span class="signature">(failureStrategy, value)</span><span class="type-signature"> &rarr; {Subject}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create a new Subject instance given a value. The factory will look through the list of
-    registered types to find a subject constructor function, and return the appropriate Subject
-    subclass for that value type.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>failureStrategy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">FailureStrategy</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The failure strategy to use when an assertion fails.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The value being checked.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_subject_factoryBase.js.html">lib/subject/factoryBase.js</a>, <a href="lib_subject_factoryBase.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>A subject instance.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Subject</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">lib/subject/eachSubject.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module certainty */
+var ProxyBase = require('./proxy');
+var subjectFactory = require('./factoryBase');
+
+/** A subject which executes its assertions on each element of an iterable.
+    @param {Subject} The subject responsible for creating this.
+    @param {Array} elements List of elements to test.
+    @param {string} elementName What noun to use when referring to elements ('item', 'child', etc.)
+    @param {bool} opt_noIndex If true, don't include the element index in the failure message.
+    @constructor
+    @extends ProxyBase
+  */
+function EachSubject(subject, elements, elementName, opt_noIndex) {
+  ProxyBase.call(this);
+  this.elementSubjects = [];
+  for (var i = 0; i &lt; elements.length; ++i) {
+    var es = subjectFactory.newSubject(subject.failureStrategy, elements[i]);
+    es.named(elementName + (opt_noIndex ? '' : (' ' + i)) + ' of ' + subject.describe());
+    es.failureMessage = subject.failureMessage;
+    this.elementSubjects.push(es);
+  }
+}
+EachSubject.prototype = Object.create(ProxyBase.prototype);
+EachSubject.prototype.constructor = ProxyBase;
+
+/** Called for a proxied method; invokes the method once for every element in the list. */
+EachSubject.prototype.invoke = function(methodName, args) {
+  for (var i = 0; i &lt; this.elementSubjects.length; ++i) {
+    var subject = this.elementSubjects[i];
+    this.elementSubjects[i] = this.getMethod(subject, methodName).apply(subject, args);
+  }
+  return this;
+};
+
+module.exports = EachSubject;
+</code></pre>
+        </article>
+    </section>
 
 
 
