@@ -167,9 +167,12 @@ ensure(someValue).hasType(type);
 // Ensure that the test expression is one of a known set of values.
 ensure(someValue).isIn(array);
 ensure(someValue).isIn(set);
+ensure(someValue).is(verb, testFn);
+ensure(someValue).isNot(verb, testFn);
 
 // Example:
 ensure('alpha').isIn(['alpha', 'beta', 'gamma']);
+ensure(10).is('be even', (n) => (n % 2 == 0));
 ```
 
 ### Array assertions

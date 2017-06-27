@@ -332,6 +332,18 @@ describe('ensure', function () {
       'Expected 1 to be in [2, 3].');
   });
 
+  it('.is', function() {
+    ensure(2).is('be even', function(n) { return n % 2 === 0 });
+    assertThrows(function() { ensure(1).is('be even', function(n) { return n % 2 === 0 }) },
+      'Expected 1 to be even.');
+  });
+
+  it('.isNot', function() {
+    ensure(1).isNot('be even', function(n) { return n % 2 === 0 });
+    assertThrows(function() { ensure(2).isNot('be even', function(n) { return n % 2 === 0 }) },
+      'Expected 2 to not be even.');
+  });
+
   it('.withFailureMessage', function() {
     assertThrows(function() { ensure(false).withFailureMessage('Not true!').isTrue(); },
       'Not true!');
