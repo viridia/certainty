@@ -38,6 +38,7 @@
     "doc": "doc",
     "test": "test"
   },
+  "typings": "./index.d.ts",
   "dependencies": {},
   "repository": {
     "type": "git",
