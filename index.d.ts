@@ -42,6 +42,8 @@ export class Subject {
   public isNotInstanceOf(expected: any): this;
   public hasType(expected: string): this;
   public isIn(collection: any): this;
+  public is(verb: string, testFn: (value: any) => boolean): this;
+  public isNot(verb: string, testFn: (value: any) => boolean): this;
 
   // ArraySubject
   public isEmpty(): this;
