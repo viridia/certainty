@@ -140,15 +140,13 @@ describe('ensure', function () {
       'Expected null to be "".');
     assertThrows(function() {
       ensure('a longer string').isEqualTo('an even longer string'); },
-        'Expected value differs from actual value:\n' +
-          '  expected: "an even longer string"\n' +
-          '    actual: "a longer string"');
+        'Expected "a longer string" to be "an even longer string".');
     assertThrows(function() {
       ensure('a very long string that has a whole lot of characters, maybe as many as eighty')
         .isEqualTo('a very long string that has a whole lot of characters'); },
         'Expected value differs from actual value starting at character 53:\n' +
-          '  expected: "...ot of characters"\n' +
-          '    actual: "...ot of characters, maybe as many as eighty"');
+          '  expected: ..."ot of characters"\n' +
+          '    actual: ..."ot of characters, maybe as many as eighty"');
   });
 
   it('.equals', function() {
@@ -218,27 +216,25 @@ describe('ensure', function () {
       'Expected null to be "".');
     assertThrows(function() {
       ensure('a longer string').isDeeplyEqualTo('an even longer string'); },
-        'Expected value differs from actual value:\n' +
-          '  expected: "an even longer string"\n' +
-          '    actual: "a longer string"');
+        'Expected "a longer string" to be "an even longer string".');
     assertThrows(function() {
       ensure('a very long string that has a whole lot of characters, maybe as many as eighty')
         .isDeeplyEqualTo('a very long string that has a whole lot of characters'); },
         'Expected value differs from actual value starting at character 53:\n' +
-          '  expected: "...ot of characters"\n' +
-          '    actual: "...ot of characters, maybe as many as eighty"');
+          '  expected: ..."ot of characters"\n' +
+          '    actual: ..."ot of characters, maybe as many as eighty"');
     assertThrows(function() {
       ensure({ a: 1 }).named('v').isDeeplyEqualTo({ a: 2 }); },
         'Expected v.a to be 2, actual value was 1.');
     assertThrows(function() {
       ensure({ a: 1, b: 2 }).named('v').isDeeplyEqualTo({ a: 1 }); },
-        'Value has unexpected property v.b with value 2.');
+        'Unexpected property v.b with value 2.');
     assertThrows(function() {
       ensure({ a: 1 }).named('v').isDeeplyEqualTo({ a: 1, b: 2 }); },
-        'Value missing expected property v.b with value 2.');
+        'Missing expected property v.b with value 2.');
     assertThrows(function() {
       ensure({ a: {} }).named('v').isDeeplyEqualTo({ a: { b: 2 } }); },
-        'Value missing expected property v.a.b with value 2.');
+        'Missing expected property v.a.b with value 2.');
     assertThrows(function() { ensure(/abc/g).named('r').isDeeplyEqualTo(/abc/i); },
         'Expected r to be /abc/i, actual value was /abc/g.');
     assertThrows(function() {
@@ -252,6 +248,21 @@ describe('ensure', function () {
         'Expected value of v differs from actual value:\n' +
         '  expected: [{ a: 1, b: "a" }]\n' +
         '    actual: 1');
+    var obj1 = {
+      property_1: 'property_1 value',
+      property_2: 'property_2 value',
+      property_3: 'property_3 value',
+      property_4: 'property_4 value',
+      property_5: 'property_5 value',
+    };
+    assertThrows(function() {
+      ensure(obj1).named('v').isDeeplyEqualTo({}); },
+        'Expected value of v does not equal actual value:\n' +
+        '  v.property_1: Unexpected property with value "property_1 value".\n' +
+        '  v.property_2: Unexpected property with value "property_2 value".\n' +
+        '  v.property_3: Unexpected property with value "property_3 value".\n' +
+        '  v.property_4: Unexpected property with value "property_4 value".\n' +
+        '  ...1 additional differences not shown.');
     // TODO: Arrays, buffer, etc.
   });
 
