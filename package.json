@@ -1,6 +1,6 @@
 {
   "name": "certainty",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Full-featured JavaScript assertion library with friendly error messages.",
   "main": "index.js",
   "scripts": {
