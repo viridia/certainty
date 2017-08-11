@@ -46,6 +46,47 @@ export class Subject {
   public isNot(verb: string, testFn: (value: any) => boolean): this;
 
   // ArraySubject
+  // public isEmpty(): this;
+  // public isNotEmpty(): this;
+  // public hasLength(length: number): this;
+  // public contains(element: any): this;
+  // public doesNotContain(element: any): this;
+  // public containsAllOf(...elements: any[]): InOrder;
+  // public containsExactly(...elements: any[]): InOrder;
+  // public containsAnyOf(...elements: any[]): this;
+  // public containsNoneOf(...elements: any[]): this;
+  // public containsAllIn(elements: any[]): InOrder;
+  // public containsExactlyIn(elements: any[]): InOrder;
+  // public containsAnyIn(elements: any[]): this;
+  // public containsNoneIn(elements: any[]): this;
+  // public containsAny(verb: string, testFn: (value: any) => boolean): this;
+  // public containsAll(verb: string, testFn: (value: any) => boolean): this;
+  // public containsNone(verb: string, testFn: (value: any) => boolean): this;
+  // public eachElement(): Subject; // TypeScript can't infer return type
+
+  // ObjectSubject
+  // public hasField(fieldName: string): FieldValue;
+  // public doesNotHaveField(fieldName: string): this;
+  // public hasOwnField(fieldName: string): FieldValue;
+  // public doesNotHaveOwnField(fieldName: string): this;
+
+  constructor(failureStrategy: FailureStrategy, value: any);
+}
+
+export interface BooleanSubject extends Subject {}
+export interface NumberSubject extends Subject {}
+
+export class StringSubject extends Subject {
+  public isEmpty(): this;
+  public isNotEmpty(): this;
+  public includes(expected: string): this;
+  public doesNotInclude(expected: string): this;
+  public startsWith(expected: string): this;
+  public endsWith(expected: string): this;
+  public matches(regex: RegExp): this;
+}
+
+export class ArraySubject extends Subject {
   public isEmpty(): this;
   public isNotEmpty(): this;
   public hasLength(length: number): this;
@@ -62,28 +103,16 @@ export class Subject {
   public containsAny(verb: string, testFn: (value: any) => boolean): this;
   public containsAll(verb: string, testFn: (value: any) => boolean): this;
   public containsNone(verb: string, testFn: (value: any) => boolean): this;
-  public eachElement(): Subject; // TypeScript can't infer return type
+  public eachElement(): Subject; // Can't infer return type from element
+}
 
-  // ObjectSubject
+export class ObjectSubject extends Subject {
+  public isEmpty(): this;
+  public isNotEmpty(): this;
   public hasField(fieldName: string): FieldValue;
   public doesNotHaveField(fieldName: string): this;
   public hasOwnField(fieldName: string): FieldValue;
   public doesNotHaveOwnField(fieldName: string): this;
-
-  constructor(failureStrategy: FailureStrategy, value: any);
-}
-
-export interface BooleanSubject extends Subject {}
-export interface NumberSubject extends Subject {}
-
-export class StringSubject extends Subject {
-  public isEmpty(): this;
-  public isNotEmpty(): this;
-  public includes(expected: string): this;
-  public doesNotInclude(expected: string): this;
-  public startsWith(expected: string): this;
-  public endsWith(expected: string): this;
-  public matches(regex: RegExp): this;
 }
 
 export interface FieldValue {
@@ -103,12 +132,15 @@ export class PromiseSubject<P> extends Subject {
 }
 
 export interface Verb {
-  // TypeScript doesn't support ES6 types
-  // (subject: Set<set>): SetSubject;
+  // TypeScript doesn't support matching on ES6 types? (some versions?)
+  // (subject: Set<any>): SetSubject;
   // (subject: Map<any, any>): MapSubject;
   <P>(subject: Promise<P>): PromiseSubject<P>;
+  (subject: any[]): ArraySubject;
   (subject: string): StringSubject;
-  (subject: any): Subject;
+  (subject: object): ObjectSubject & ArraySubject; // it might be an array
+  // If type is unknown, assume it can be any known type.
+  (subject: any): Subject & StringSubject & ArraySubject & ObjectSubject;
 }
 
 export const ensure: Verb;
