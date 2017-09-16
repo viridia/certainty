@@ -314,6 +314,17 @@ describe('ensure', function () {
       'Expected 1 to be not less than 2.');
   });
 
+  it('.isApproximately', function() {
+    ensure(1).isApproximately(1);
+    ensure(2).isApproximately(2.0000000000001);
+    ensure(2).named('two').isApproximately(2);
+    ensure(2).isApproximately(2.1, .2);
+    assertThrows(function() { ensure(1).isApproximately(2); },
+      'Expected 1 to be approximately equal to 2.');
+    assertThrows(function() { ensure(2).isApproximately(2.1, .1); },
+      'Expected 2 to be approximately equal to 2.1.');
+  });
+
   it('.hasType', function() {
     ensure(1).hasType('number');
     assertThrows(function() { ensure(1).hasType('string'); },
