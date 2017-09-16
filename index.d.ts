@@ -38,6 +38,7 @@ export class Subject {
   public isNotGreaterThan(expected: any): this;
   public isLessThan(expected: any): this;
   public isNotLessThan(expected: any): this;
+  public isApproximately(expected: number, opt_epsilon?: number): this;
   public isInstanceOf(expected: any): this;
   public isNotInstanceOf(expected: any): this;
   public hasType(expected: string): this;
