@@ -5,7 +5,7 @@ export interface FailureStrategy {
 }
 
 export interface SubjectFactory {
-  addType(typeTest: (value: any) => boolean, subjectClass: any);
+  addType(typeTest: (value: any) => boolean, subjectClass: any): void;
   newSubject(failureStrategy: FailureStrategy, value: any): Subject;
 }
 
