@@ -155,6 +155,7 @@ ensure(someValue).isGreaterThan(otherValue);
 ensure(someValue).isNotGreaterThan(otherValue);
 ensure(someValue).isLessThan(otherValue);
 ensure(someValue).isNotLessThan(otherValue);
+ensure(someValue).isApproximately(otherValue, opt_epsilon);
 ```
 #### Type tests
 ```javascript
